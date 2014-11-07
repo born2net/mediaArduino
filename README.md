@@ -7,7 +7,23 @@ Introduction
 
 <h4>developed by http://www.digitalsignage.com</h4>
 
-In this document we provide the following:
+Arduino Yun is an amazing protyping platform that allows anyone to build a custom solution for Internet of things (IoT).
+While it's true that you can buy off the shelf products to enable IoT, such as Vera, Ninja Blocks etc, Arduino is unique as it allows you to:
+    1. create a fully customized product
+    2. keep the cost down
+    3. creates opportunity to build solutions for your clients and charge them for that service
+    4. 100% hackable so there no limits
+    5. you can choose from thousands of inexpensive sensors, relays, switches, and more
+    6. it's very easy to get started and even easier to build
+    7. Arduino is very popular which means you can find a ton of online docs, expansion boards (shields) and help if you need it.
+
+Although this document was created first and for most to help Arduino users integrate a custom solutions of IoT and Digital Signage;
+anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit.
+We have taken the time to build a custom binary image that you can burn onto a micro SD card and load directly onto the Arduino Yun.
+The image includes Node.js 10.32, the Firmata drivers of Node.js and Firmata drivers for the Micro controller to allow communication between the two using the Yun’s bridge.
+We also include a serial watchdog, sample apps and more.
+
+To summarize:
 <ul>
 <li>simple to follow, step by step instructions on Arduino Yun setup</li>
 <li>everything that's needed to run node.js with Arduino Yun</li>
