@@ -107,10 +107,51 @@ When you first get your new Arduino Yun it will come configured as a WIFI hot sp
 This means you can connect to it directly using a mobile phone a tablet as it will serve an IP over DHCP and has a built in web server.
 You can follow these instructions to setup your Arduino Yun: http://arduino.cc/en/Guide/ArduinoYun (per Windows and Mac).
 
-Next you will need a Micro SD card. We recommend you get the Kingston 8GB Flash memory from: http://www.amazon.com/gp/product/B00200K1TS/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1
+Next we need to upgrade the Firmware on the Arduino Yun to 1.5.2, to this copy this file: http://alturl.com/8ivfo
+onto a micro SD card, insert it into the Arduino and reboot.
 
-The reason we recommend this specific Micro SD card is that you will be able to skip a lot of steps and simple download a binary image from our web site.
-The binary image already has most of the configuration on it so you will not have to setup any libraries or config any software on the Arduino Yun.
+Open a up a web browser and point it to the address of the Arduino Yun (remember it is still a hot spot serving you an IP address).
+You can most likely reach it via the IP address of: 192.168.240.1 or via http://arduino.local
+
+Next, select to upgrade the firmware and reboot (it's a red box at the bottom of the web page)
+
+Next, when the device has been updated with the latest firmware, configure it to connect to your wifi network and once again reboot it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Next, you will need a Micro SD card. You should get a 16GB Micro SD card.
+
+Why 16GB you ask? since the image we built was created from an 8GB micro SD, there is a chance that if you also get an 8GB micro SD that has a size that is a few bytes smaller, the image will not fit.
+So to play it safe, get the next level up micro SD (16GB) and you won't have an issue burning the image in (it's only like $4.00 more, crazy how cheap memory is these days).
+The binary image already has all of the Linux configuration on it including drivers, applications and configs, so you will not have to setup anything special on the Linux side.
+
+So to proceed with the binary image, first download it from: http://alturl.com/ytdxo
+
+To burn the binary image we will use a HDD Sector copy for Windows. Download it from: http://alturl.com/k333x
+
+Install the exe, run it, and select source from file, and select the downloaded file of: PerfectArduino.imgc
+
+next, click 'next' to select the target device, and pick the Micro SD and click start to begin the burning of the OS image onto the micro SD card.
+
+<img src="http://www.digitalsignage.com/_images/burnsd.png"/>
+
+while the burning process is taking place, go ahead and SSH into the Arduino and we will need to edit
+
+once the task has completed, insert the micro SD card onto the Arduino and reboot the Arduino.
+
+
+
 
 Once your Arduino Yun is on WIFI or ethernet network, you will need to know it's IP address.
 The best way to figure this out is to install the Arduino IDE, from: http://arduino.cc/en/Main/Software
@@ -127,7 +168,7 @@ Next you need to ssh (login) onto the Linux side of the Arduino. In Mac ssh is p
 ssh root@192.168.1.94
 </pre>
 
-The default ssh user name is: root and password is arduino
+
 
 
 
