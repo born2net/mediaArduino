@@ -69,21 +69,17 @@ Architecture
 +                     +
 + [Your js script]    +
 +        |            +
-+        |            +
 +    [node.js]        +
-+        |            +
 +        |            +
 +   [Firmata.js]      +
 +        |            +
-+        |            +
 +   [serialport.js]   +
-+        |            +
 +        |            +
 +++++++++++++++++++++++
          |
-   +++++++++++++++
-   + Yun Bridge  +
-   +++++++++++++++
++++++++++++++++++++++++
++ serial Yun Bridge   +
++++++++++++++++++++++++
          |
 +++++++++++++++++++++++
 +  Micro Controller   +
