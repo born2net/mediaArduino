@@ -1,11 +1,11 @@
-<h5>Internet of things with Arduino Yun</h5>
+<h2>Internet of things with Arduino Yun</h2>
 ==========
 
 
 Introduction
 ---------------------------------------
 
-<h2>developed by http://www.digitalsignage.com</h2>
+<h4>developed by http://www.digitalsignage.com</h4>
 
 In this document we provide the following:
 <ul>
