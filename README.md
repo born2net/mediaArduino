@@ -115,9 +115,21 @@ The binary image already has most of the configuration on it so you will not hav
 Once your Arduino Yun is on WIFI or ethernet network, you will need to know it's IP address.
 The best way to figure this out is to install the Arduino IDE, from: http://arduino.cc/en/Main/Software
 
-Next install the Arduino to your PC or Mac, and in the Arduino IDE select, Tools > Port to see it's new IP address.
+Once installed, connect the Arduino to your PC or Mac via USB cable and in the Arduino IDE select, Tools > Port to see it's new IP address.
 
 <img src="http://www.digitalsignage.com/_images/ardsc1.png"/>
+
+As you can see my IP address is 192.168.1.94 (yours will be different).
+
+Next you need to ssh (login) onto the Linux side of the Arduino. In Mac ssh is part of the OS, in Windows, you can download cygwin which comes with SSH (https://www.cygwin.com/)
+
+<pre>
+ssh root@192.168.1.94
+</pre>
+
+The default ssh user name is: root and password is arduino
+
+
 
 
 
