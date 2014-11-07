@@ -64,31 +64,37 @@ So you can add custom C functions on the Arduino MCU, and invoke them from Javas
 Architecture
 ---------------------------------------
 <pre>
-+++++++++++++++++++++++
-+    LINUX OpenWRT    +
-+                     +
-+ [Your js script]    +
-+        |            +
-+    [node.js]        +
-+        |            +
-+   [Firmata.js]      +
-+        |            +
-+   [serialport.js]   +
-+        |            +
-+++++++++++++++++++++++
-         |
-+++++++++++++++++++++++
-+ serial Yun Bridge   +
-+++++++++++++++++++++++
-         |
-+++++++++++++++++++++++
-+  Micro Controller   +
-+        |            +
-+  [Firmata C code    +
-+        |            +
-+ [custom functions]  +
-+                     +
-+++++++++++++++++++++++
+
+===================================
+|                                 |
+|         <Arduino Yun>           |
+|                                 |
+|     +++++++++++++++++++++++     |
+|     +   <LINUX OpenWRT>   +     |
+|     +                     +     |
+|     + [Your js script]    +     |
+|     +        |            +     |
+|     +    [node.js]        +     |
+|     +        |            +     |
+|     +   [Firmata.js]      +     |
+|     +        |            +     |
+|     +   [serialport.js]   +     |
+|     +        |            +     |
+|     +++++++++++++++++++++++     |
+|              |                  |
+|     +++++++++++++++++++++++     |
+|     +<serial Yun Bridge>  +     |
+|     +++++++++++++++++++++++     |
+|              |                  |
+|     +++++++++++++++++++++++     |
+|     + <Micro Controller>  +     |
+|     +        |            +     |
+|     +  [Firmata C code    +     |
+|     +        |            +     |
+|     + [custom functions]  +     |
+|     +++++++++++++++++++++++     |
+|                                 |
+===================================
 </pre>
 
 
