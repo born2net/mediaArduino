@@ -5,8 +5,8 @@
 Introduction
 ---------------------------------------
 
-<h4>developed by http://www.digitalsignage.com</h4>
-<h4>Digital Signage for IoT: http://www.digitalsignage.com/_html/internet_of_things_digital_signage.html</h4>
+<h5>developed by http://www.digitalsignage.com</h5>
+<h5>Digital Signage for IoT: http://www.digitalsignage.com/_html/internet_of_things_digital_signage.html</h5>
 
 Arduino Yun is an amazing protyping platform that allows anyone to build a custom solution for Internet of things (IoT).
 While it's true that you can buy off the shelf products to enable IoT, such as Vera, Ninja Blocks etc, Arduino is unique as it allows you to:
