@@ -64,7 +64,6 @@ So you can add custom C functions on the Arduino MCU, and invoke them from Javas
 Architecture
 ---------------------------------------
 <pre>
-===================================
 |                                 |
 |         <Arduino Yun>           |
 |                                 |
@@ -93,7 +92,6 @@ Architecture
 |     + [custom functions]  +     |
 |     +++++++++++++++++++++++     |
 |                                 |
-===================================
 </pre>
 
 
