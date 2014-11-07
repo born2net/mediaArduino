@@ -1,0 +1,17 @@
+# Commands
+
+## getPressure
+
+Gets the value of the pressure.
+
+##### Return
+
+`integer`
+
+## getTemperature
+
+Gets the value of the temperature.
+
+##### Return
+
+`integer`

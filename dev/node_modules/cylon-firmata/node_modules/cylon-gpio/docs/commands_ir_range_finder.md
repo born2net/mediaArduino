@@ -1,0 +1,13 @@
+# Commands
+
+## analogRead()
+
+Returns an integer value that represents the analog read from the sensor.
+
+## rangeCm()
+
+Returns the distance measured by the sensor in cm.
+
+## range()
+
+Returns the distance measured by the sensor in cm.

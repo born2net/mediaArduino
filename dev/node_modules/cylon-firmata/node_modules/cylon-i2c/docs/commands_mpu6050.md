@@ -1,0 +1,13 @@
+# Commands
+
+## getAngularVelocity
+
+Gets the value of the Angular Velocity
+
+## getAcceleration
+
+Gets the value of the Acceleration
+
+## getMotion6
+
+Gets the value of the Motion.

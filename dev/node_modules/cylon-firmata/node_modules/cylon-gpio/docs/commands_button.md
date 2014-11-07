@@ -1,0 +1,10 @@
+# Commands
+
+## isPressed()
+
+Returns true or false matching state of the button.
+
+##### Returns  
+
+`true or false`
+
