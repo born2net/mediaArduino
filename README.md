@@ -1,4 +1,4 @@
-<h1>Arduino Yun with node.js & Digital Signage integration</h1>
+<h1>Arduino Yun with node.js & Digital Signage integration (IoT)</h1>
 ==========
 
 
@@ -65,7 +65,7 @@ Architecture
 ---------------------------------------
 
 Below you can get a sense of how things are laid out.
-The process of sending a byte command from your developed own developed javascript code and all the way down into the MCU.
+The process of sending a byte command from your own developed javascript code and all the way down into the MCU.
 
 <pre>
 +---------------------------------+
