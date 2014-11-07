@@ -8,12 +8,13 @@ Introduction
 
 In this document we provide the following:
 <ul>
-<li>step by step instructions for Arduino Yun setup with Node.js</li>
+<li>simple to follow, step by step instructions on Arduino Yun setup</li>
+<li>everything that's needed to run node.js with Arduino Yun</li>
 <li>provide a pre-compiled binary image allowing for a quick setup of a new Arduino Yun</li>
 <li>pre compiled Firmata driver for both Node.js and as Arduino Sketch</li>
 <li>web server to allow communication between Arduino Yun and Digital Signage Internet of things</li>
 <li>built in watchdog to restart upon serial communication failure</li>
-<li>lots of sample scripts and applications including cyclon.js</li>
+<li>lots of sample scripts and applications including cyclon.js driver</li>
 <li>video tutorials, resource links and more</li>
 </ul>
 
