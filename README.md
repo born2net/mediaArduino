@@ -65,7 +65,7 @@ Architecture
 ---------------------------------------
 <pre>
 |                                 |
-|         <Arduino Yun>           |
+|         Arduino Yun             |
 |                                 |
 |     +++++++++++++++++++++++     |
 |     +   <LINUX OpenWRT>   +     |
@@ -81,11 +81,11 @@ Architecture
 |     +++++++++++++++++++++++     |
 |              |                  |
 |     +++++++++++++++++++++++     |
-|     +<serial Yun Bridge>  +     |
+|     + serial Yun Bridge   +     |
 |     +++++++++++++++++++++++     |
 |              |                  |
 |     +++++++++++++++++++++++     |
-|     + <Micro Controller>  +     |
+|     +  Micro Controller   +     |
 |     +        |            +     |
 |     +  [Firmata C code    +     |
 |     +        |            +     |
