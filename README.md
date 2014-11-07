@@ -1,4 +1,4 @@
-<h2>Internet of things with Arduino Yun</h2>
+<h2>Arduino Yun</h2>
 ==========
 
 
@@ -8,15 +8,17 @@ Introduction
 <h6>Developed by MediaSignage (http://www.digitalsignage.com)</h6>
 <h6>Digital Signage for IoT: http://alturl.com/zqp3z</h6>
 
-Arduino Yun is an amazing protyping platform that allows anyone to build a custom solution for Internet of things (IoT).
+
+Arduino Yun is an amazing prototyping platform that allows anyone to build a custom solution for Internet of things (IoT).
+This means that you can control lights, turn on oven toasters, get real time weather without needing a degree in electrical engineering.
+
 While it's true that you can buy off the shelf products to enable IoT, such as Vera, Ninja Blocks etc, Arduino is unique as it allows you to:
-    1. create a fully customized product
+    1. create a fully customized product with very little effort
     2. keep the cost down
     3. creates opportunity to build solutions for your clients and charge them for that service
-    4. 100% hackable so there no limits
+    4. 100% hackable so there are no limits
     5. you can choose from thousands of inexpensive sensors, relays, switches, and more
-    6. it's very easy to get started and even easier to build
-    7. Arduino is very popular which means you can find a ton of online docs, expansion boards (shields) and help if you need it.
+    6. Arduino is very popular which means you can find a ton of online docs, expansion boards (shields) and help, if you need it
 
 Although this document was created first and for most to help Arduino users integrate a custom solutions of IoT and Digital Signage;
 anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit.
@@ -36,6 +38,25 @@ To summarize:
 <li>lots of sample scripts and applications including cyclon.js driver</li>
 <li>video tutorials, resource links and more</li>
 </ul>
+
+
+Why Arduino Yun and Node.js
+---------------------------------------
+
+Arduino IDE can load a sketch, which is C based code that compiles into machine language and runs in a loop on top of the Arduino Yun Micro Controller.
+While C is a powerful language, it can be a pain to develop in and even more of pain to debug.
+
+Say hello to Node.js (http://nodejs.org) a powerful, super fast Javascript engine (aka V8) developed by Google V8 that can  process Javascript code right on the Arduino Yun Linux OS.
+That's right, Arduino Yun comes with built in "Linux on a chip" version of OpenWrt (https://openwrt.org)
+
+What this means is that you can develop (and even debug) in Javascript on the Arduino Yun, and use a driver called Firmata to translate Javascript commands onto the Arduino Yun micro controller.
+Essentially the Firmata is a wrapper over a serial driver that pushes bytes onto the Micro controller unit (MCU) as well as listens to data coming from the MCU.
+
+And if you find that you do need to develop something specific in C; you'll be happy to know that we enabled in the Firmata driver an option to send and receive strings.
+So you can add custom C functions on the Arduino MCU, and invoke them from Javascript, if you need to...
+
+
+
 
 
 ------------------------------------------------------------------------
