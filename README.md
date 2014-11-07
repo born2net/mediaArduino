@@ -5,7 +5,7 @@
 Introduction
 ---------------------------------------
 
-<h6>developed by http://www.digitalsignage.com</h6>
+<h6>Developed by MediaSignage (http://www.digitalsignage.com)</h6>
 <h6>Digital Signage for IoT: http://alturl.com/zqp3z</h6>
 
 Arduino Yun is an amazing protyping platform that allows anyone to build a custom solution for Internet of things (IoT).
