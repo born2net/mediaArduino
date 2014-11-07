@@ -13,7 +13,7 @@ In this document we provide the following:
 <li>pre compiled Firmata driver for both Node.js and as Arduino Sketch</li>
 <li>web server to allow communication between Arduino Yun and Digital Signage Internet of things</li>
 <li>built in watchdog to restart upon serial communication failure</li>
-<li>lots of sample scripts and applications including cyclon.js<li>
+<li>lots of sample scripts and applications including cyclon.js</li>
 <li>video tutorials, resource links and more</li>
 </ul>
 
