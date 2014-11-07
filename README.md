@@ -15,13 +15,19 @@ In this document we provide the following:
 <li>pre compiled Firmata driver for both Node.js and as Arduino Sketch</li>
 <li>web server to allow communication between Arduino Yun and Digital Signage Internet of things</li>
 <li>built in watchdog to restart upon serial communication failure</li>
-<li>App for remote control of Arduino Yum across the web using SignagePlayer LAN server gateway</li>
+<li>App for remote control of Arduino Yun across the web using SignagePlayer LAN server gateway</li>
 <li>lots of sample scripts and applications including cyclon.js driver</li>
 <li>video tutorials, resource links and more</li>
 </ul>
 
 
 ------------------------------------------------------------------------
+
+
+Why Arduino Yun as IoT for Digital Signage?
+---------------------------------------
+
+
 
 StudioLite is an open source, 100% FREE, Digital Signage platform that was designed with ease of use in mind.
 With StudioLite anyone can have a Digital Signage solution that is entirely customizable. 
