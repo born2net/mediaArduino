@@ -68,9 +68,9 @@ Architecture
 |         Arduino Yun             |
 |                                 |
 |     +++++++++++++++++++++++     |
-|     +    LINUX OpenWRT    +     |
+|     +   #LINUX OpenWRT#   +     |
 |     +                     +     |
-|     + [Your js script]    +     |
+|     +   [Your js cde]     +     |
 |     +        |            +     |
 |     +    [node.js]        +     |
 |     +        |            +     |
@@ -81,11 +81,11 @@ Architecture
 |     +++++++++++++++++++++++     |
 |              |                  |
 |     +++++++++++++++++++++++     |
-|     + serial Yun Bridge   +     |
+|     + #serial Yun Bridge#  +     |
 |     +++++++++++++++++++++++     |
 |              |                  |
 |     +++++++++++++++++++++++     |
-|     +  Micro Controller   +     |
+|     + #Micro Controller#  +     |
 |     +        |            +     |
 |     +  [Firmata C code    +     |
 |     +        |            +     |
