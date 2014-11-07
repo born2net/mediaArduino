@@ -63,6 +63,10 @@ So you can add custom C functions on the Arduino MCU, and invoke them from Javas
 
 Architecture
 ---------------------------------------
+
+Below you can get a sense of how things are laid out.
+The process of sending a byte command from your developed own developed javascript code and all the way down into the MCU.
+
 <pre>
 +---------------------------------+
 |         Arduino Yun             |
