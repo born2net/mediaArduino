@@ -48,7 +48,8 @@ Why Arduino Yun and Node.js
 Arduino IDE can load a sketch, which is C based code that compiles into machine language and runs in a loop on top of the Arduino Yun Micro Controller.
 While C is a powerful language, it can be a pain to develop in and even more of pain to debug.
 
-Say hello to Node.js (http://nodejs.org) a powerful, super fast Javascript engine (aka V8) developed by Google, that can process Javascript code right on the Arduino Yun Linux OS.
+Say hello to Node.js (http://nodejs.org) Node.js, a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications.
+Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js can process Javascript code right on the Arduino Yun Linux OS.
 That's right, Arduino Yun comes with built in "Linux on a chip" version of OpenWrt (https://openwrt.org)
 
 What this means is that you can develop (and even debug) in Javascript on the Arduino Yun, and use a driver called Firmata to translate Javascript commands onto the Arduino Yun micro controller.
@@ -60,19 +61,83 @@ So you can add custom C functions on the Arduino MCU, and invoke them from Javas
 
 ------------------------------------------------------------------------
 
-
-Why Arduino Yun as IoT for Digital Signage?
+Architecture
 ---------------------------------------
 
-StudioLite is an open source, 100% FREE, Digital Signage platform that was designed with ease of use in mind.
-With StudioLite anyone can have a Digital Signage solution that is entirely customizable. 
-Take the source code, modify it, brand it and build a product that's right for you and your customers.
-Best of all, you will take full advantage of the world's most popular Digital Signage cloud so you don't have to worry about backend programming or even setup a server, it's all done for you using the mediaCLOUD.
+<pre>
 
- - Based on the poplar SignageStudio Pro ( [MediaSignage]: http://www.DigitalSignage.com )
- - Connected to a private mediaSERVER or the public free mediaCLOUD
- - 100% open source based on GNU V3 license
- - Contributors are welcome, fork, modify and send pull requests
++++++++++++++++++++++++
++    LINUX OpenWRT    +
++                     +
++ [Your js script]    +
++        |            +
++        |            +
++    [node.js]        +
++        |            +
++        |            +
++   [Firmata.js]      +
++        |            +
++        |            +
++   [serialport.js]   +
++        |            +
++        |            +
++++++++++++++++++++++++
+         |
+   +++++++++++++++
+   + Yun Bridge  +
+   +++++++++++++++
+         |
++++++++++++++++++++++++
++  Micro Controller   +
++        |            +
++  [Firmata C code    +
++        |            +
++ [custom functions]  +
++                     +
++++++++++++++++++++++++
+
+</prev>
+
+
+
+
+Arduino setup
+---------------------------------------
+
+downloading the bin
+burning it
+cygwin ssh scp
+ftp
+
+
+Startup scripts and the Watchdog
+---------------------------------------
+
+init.d
+firmata wachdog and serial driver
+
+
+Adding custom C code on MCU
+---------------------------------------
+
+send and receive strings
+
+
+Arduino and Digital Signage
+---------------------------------------
+
+listening to commands
+sending
+
+
+Sending commands over the web
+---------------------------------------
+
+
+What's next
+---------------------------------------
+
+u can cylon, we have sample script
 
 Links:
 ------------------------------------------------------------------------
