@@ -64,11 +64,11 @@ So you can add custom C functions on the Arduino MCU, and invoke them from Javas
 Architecture
 ---------------------------------------
 <pre>
-|                                 |
++---------------------------------+
 |         Arduino Yun             |
 |                                 |
 |     +++++++++++++++++++++++     |
-|     +   <LINUX OpenWRT>   +     |
+|     +    LINUX OpenWRT    +     |
 |     +                     +     |
 |     + [Your js script]    +     |
 |     +        |            +     |
@@ -91,7 +91,7 @@ Architecture
 |     +        |            +     |
 |     + [custom functions]  +     |
 |     +++++++++++++++++++++++     |
-|                                 |
++---------------------------------+
 </pre>
 
 
