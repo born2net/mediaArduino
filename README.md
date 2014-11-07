@@ -81,13 +81,13 @@ Architecture
 |     +++++++++++++++++++++++     |
 |              |                  |
 |     +++++++++++++++++++++++     |
-|     + #serial Yun Bridge#  +     |
+|     + #serial Yun Bridge#  +    |
 |     +++++++++++++++++++++++     |
 |              |                  |
 |     +++++++++++++++++++++++     |
 |     + #Micro Controller#  +     |
 |     +        |            +     |
-|     +  [Firmata C code    +     |
+|     +  [Firmata C code]   +     |
 |     +        |            +     |
 |     + [custom functions]  +     |
 |     +++++++++++++++++++++++     |
