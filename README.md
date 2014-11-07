@@ -13,13 +13,14 @@ Arduino Yun is an amazing prototyping platform that allows anyone to build a cus
 This means that you can control lights, turn on oven toasters, get real time weather without needing a degree in electrical engineering.
 
 While it's true that you can buy off the shelf products to enable IoT, such as Vera, Ninja Blocks etc, Arduino is unique as it allows you to:
+<pre>
     1. create a fully customized product with very little effort
     2. keep the cost down
     3. creates opportunity to build solutions for your clients and charge them for that service
     4. 100% hackable so there are no limits
     5. you can choose from thousands of inexpensive sensors, relays, switches, and more
     6. Arduino is very popular which means you can find a ton of online docs, expansion boards (shields) and help, if you need it
-
+</pre>
 Although this document was created first and for most to help Arduino users integrate a custom solutions of IoT and Digital Signage;
 anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit.
 We have taken the time to build a custom binary image that you can burn onto a micro SD card and load directly onto the Arduino Yun.
