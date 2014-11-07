@@ -1,4 +1,4 @@
-<h2>Arduino Yun</h2>
+<h1>Arduino Yun with node.js & Digital Signage integration</h1>
 ==========
 
 
@@ -25,7 +25,7 @@ While it's true that you can buy off the shelf products to enable IoT, such as V
 Although this document was created first and for most to help Arduino users integrate a custom solutions of IoT and Digital Signage;
 anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit.
 We have taken the time to build a custom binary image that you can burn onto a micro SD card and load directly onto the Arduino Yun.
-The image includes Node.js 10.32, the Firmata drivers of Node.js and Firmata drivers for the Micro controller to allow communication between the two using the Yun’s bridge.
+The image includes Node.js 10.32, the Firmata drivers of Node.js and Firmata drivers for the Micro controller to allow communication between the two using the Yun bridge.
 We also include a serial watchdog, sample apps and more.
 
 To summarize:
@@ -48,7 +48,7 @@ Why Arduino Yun and Node.js
 Arduino IDE can load a sketch, which is C based code that compiles into machine language and runs in a loop on top of the Arduino Yun Micro Controller.
 While C is a powerful language, it can be a pain to develop in and even more of pain to debug.
 
-Say hello to Node.js (http://nodejs.org) a powerful, super fast Javascript engine (aka V8) developed by Google V8 that can  process Javascript code right on the Arduino Yun Linux OS.
+Say hello to Node.js (http://nodejs.org) a powerful, super fast Javascript engine (aka V8) developed by Google, that can process Javascript code right on the Arduino Yun Linux OS.
 That's right, Arduino Yun comes with built in "Linux on a chip" version of OpenWrt (https://openwrt.org)
 
 What this means is that you can develop (and even debug) in Javascript on the Arduino Yun, and use a driver called Firmata to translate Javascript commands onto the Arduino Yun micro controller.
@@ -58,16 +58,11 @@ And if you find that you do need to develop something specific in C; you'll be h
 So you can add custom C functions on the Arduino MCU, and invoke them from Javascript, if you need to...
 
 
-
-
-
 ------------------------------------------------------------------------
 
 
 Why Arduino Yun as IoT for Digital Signage?
 ---------------------------------------
-
-
 
 StudioLite is an open source, 100% FREE, Digital Signage platform that was designed with ease of use in mind.
 With StudioLite anyone can have a Digital Signage solution that is entirely customizable. 
