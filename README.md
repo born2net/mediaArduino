@@ -10,21 +10,22 @@ Introduction
 
 
 Arduino Yun is an amazing prototyping platform that allows anyone to build a custom solution for Internet of things (IoT).
-This means that you can control lights, turn on oven toasters, get real time weather without needing a degree in electrical engineering.
+This means that you can control lights, turn on oven toasters, get real time weather info, remote control servos, anything, without needing a degree in electrical engineering.
 
 While it's true that you can buy off the shelf products to enable IoT, such as Vera, Ninja Blocks etc, Arduino is unique as it allows you to:
 <ol>
     <li> create a fully customized product with very little effort</li>
-    <li> keep the cost down</li>
+    <li> keep cost down</li>
     <li> creates opportunity to build solutions for your clients and charge them for that service</li>
-    <li> 100% hackable so there are no limits</li>
     <li> you can choose from thousands of inexpensive sensors, relays, switches, and more</li>
-    <li> Arduino is very popular which means you can find a ton of online docs, expansion boards (shields) and help, if you need it</li>
+    <li> Arduino is very popular which means you can find a ton of docs, expansion boards (shields) and help</li>
+    <li> 100% hackable so there are no limits</li>
 </ol>
 
 Although this document was created first and for most to help Arduino users integrate a custom solutions of IoT and Digital Signage;
 anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit.
-We have taken the time to build a custom binary image that you can burn onto a micro SD card and load directly onto the Arduino Yun.
+
+To help you get started as quickly as possible we built a custom binary image that you can burn onto a micro SD card and load it directly onto the Arduino Yun.
 The image includes Node.js 10.32, the Firmata drivers of Node.js and Firmata drivers for the Micro controller to allow communication between the two using the Yun bridge.
 We also include a serial watchdog, sample apps and more.
 
