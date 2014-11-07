@@ -18,7 +18,8 @@ While it's true that you can buy off the shelf products to enable IoT, such as V
     <li> keep cost down</li>
     <li> creates opportunity to build solutions for your clients and charge them for that service</li>
     <li> you can choose from thousands of inexpensive sensors, relays, switches, and more</li>
-    <li> Arduino is very popular which means you can find a ton of docs, expansion boards (shields) and help</li>
+    <li> Arduino is very popular which means you can find a ton of help and docs</li>
+    <li>Arduino is easily expandable with shields (add on boards)</li>
     <li> 100% hackable so there are no limits</li>
 </ol>
 
