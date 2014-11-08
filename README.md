@@ -39,6 +39,7 @@ To summarize:
 <li>web server to allow communication between Arduino Yun and Digital Signage Internet of things</li>
 <li>built in watchdog to restart upon serial communication failure</li>
 <li>App for remote control of Arduino Yun across the web using SignagePlayer LAN server gateway</li>
+<li>App for socket client to connect to remote socket.io node.js server</li>
 <li>lots of sample scripts and applications including cyclon.js driver</li>
 <li>video tutorials, resource links and more</li>
 </ul>
@@ -48,7 +49,7 @@ Why Arduino Yun and Node.js
 ---------------------------------------
 
 Arduino IDE can load a sketch, which is C based code that compiles into machine language and runs in a loop on top of the Arduino Yun Micro Controller.
-While C is a powerful language, it can be a pain to develop in and even more of pain to debug.
+While C is a powerful language, it can be a pain to develop in C and even more of burden to debug.
 
 Say hello to Node.js (http://nodejs.org) Node.js, a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications.
 Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js can process Javascript code right on the Arduino Yun Linux OS.
@@ -76,7 +77,7 @@ The process of sending a byte command from your own developed javascript code an
 |     +++++++++++++++++++++++     |
 |     +   #LINUX OpenWRT#   +     |
 |     +                     +     |
-|     +   [Your js cde]     +     |
+|     +   [Your js code]    +     |
 |     +        |            +     |
 |     +    [node.js]        +     |
 |     +        |            +     |
@@ -106,16 +107,19 @@ Arduino setup
 ---------------------------------------
 
 When you first get your new Arduino Yun it will come configured as a WIFI hot spot.
-This means you can connect to it directly using a mobile phone a tablet as it will serve an IP over DHCP and has a built in web server.
-You can follow these instructions to setup your Arduino Yun: http://arduino.cc/en/Guide/ArduinoYun (per Windows and Mac).
+This means you can connect to it directly using a mobile phone or tablet as it will serve an IP over DHCP so you connect to its built in web server.
+You can follow these instructions to initially setup your Arduino Yun: http://arduino.cc/en/Guide/ArduinoYun (per Windows and Mac).
 
-Next we need to upgrade the Firmware on the Arduino Yun to 1.5.2, to this copy this file: http://alturl.com/8ivfo
-onto a micro SD card, insert it into the Arduino and reboot.
+Next, we need to upgrade the Firmware on the Arduino Yun to 1.5.2, so copy this updated firmware file: http://alturl.com/8ivfo
+onto the root micro SD card, insert it into the Arduino and reboot.
 
 Open a up a web browser and point it to the address of the Arduino Yun (remember it is still a hot spot serving you an IP address).
 You can most likely reach it via the IP address of: 192.168.240.1 or via http://arduino.local
 
-Next, select to upgrade the firmware and reboot (it's a red box at the bottom of the web page)
+Next, select to upgrade the firmware and reboot (it's the [RESET] at the bottom of the web page)
+
+<img src="http://www.digitalsignage.com/_images/ardsc2.png"/>
+
 
 Next, when the device has been updated with the latest firmware, configure it to connect to your wifi network and once again reboot it.
 
