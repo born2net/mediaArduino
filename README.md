@@ -123,7 +123,7 @@ Next, insert the Micro SD 16GB with the file:
 openwrt-ar71xx-generic-yun-16M-squashfs-sysupgrade.bin
 </pre>
 
-that's in the root drive (not in any sub-directory) into the Arduino and reboot.
+that was placed in the the root drive of the Micro SD (not in any sub-directory) and reboot the Arduino.
 
 Open a up a web browser and point it to the address of the Arduino Yun (remember it is still a hot spot serving you an IP address).
 You can most likely reach it via the IP address of: 192.168.240.1 or via http://arduino.local
@@ -138,7 +138,10 @@ Next, we will burn the Linux OS onto the Micro SD card. Download it from: http:/
 
 To burn the binary image we will use a HDD Sector copy application for Windows. Download it from: http://alturl.com/k333x
 
-Install the HDDRawCopy1.10Setup.exe
+Install the
+<pre>
+HDDRawCopy1.10Setup.exe
+</pre>
 
 Next you will need to connect the Micro SD (16GB) to the PC, it should come up as a drive letter in Windows, like F:\ or something of that sort.
 
@@ -155,7 +158,11 @@ Once it's done you can remove the micro SD from your PC and plug it into the Ard
 Now that the Arduino is on your WIFI or Ethernet network, you will need to know it's IP address.
 The best way to figure this out is to install the Arduino IDE, from: http://arduino.cc/en/Main/Software
 
-Once installed, connect the Arduino to your PC or Mac via USB cable and in the Arduino IDE select, Tools > Port to see it's new IP address.
+Next, connect the Arduino to your PC or Mac via USB cable.
+
+Inside Arduino IDE, select the board type from: Tools > Board > Arduino Yun
+
+Next, select Tools > Port to see it's new IP address that the Arduino received from your local network.
 
 <img src="http://www.digitalsignage.com/_images/ardsc1.png"/>
 
@@ -163,7 +170,7 @@ As you can see my IP address is 192.168.1.94 (yours will be different).
 
 Next you need to ssh (login) onto the Linux side of the Arduino. In Mac ssh is part of the OS, in Windows, you can download cygwin which comes with ssh (https://www.cygwin.com/)
 
-Once you confirm your Windows or Mac has the ssh command, execute:
+Once you confirm your Windows or Mac has the ssh command, execute ssh@YOUR_IP_ADDRESS, as in:
 <pre>
 ssh root@192.168.1.94
 </pre>
@@ -178,16 +185,57 @@ Next, while logged into the Arduino Linux, run the command:
 cp /.extroot.md5sum /tmp/overlay-disabled/etc/extroot.md5sum
 </pre>
 
-Next, we need to install the Firmata driver onto the MCU of the Arduino so we can communicate with it from the node.js using the Node.js Firmata.js package.
+don't reboot the Arduino just yet, as we need to install the Firmata driver onto the MCU of the Arduino so we can communicate with it from the node.js using the Node.js Firmata.js package.
 
-Download from this git repository
+Download from this git repository the file of:
+
+<pre>
+FirmatNodeJs/FirmatNodeJs.ino
+</pre>
+
+and put it in a directory on youe Mac / PC of: FirmatNodeJs/FirmatNodeJs.ino
+
+you will also need to download 3 more files:
+
+<pre>
+firmataSketch library\
+firmataSketch library\Boards.h
+firmataSketch library\Firmata.cpp
+firmataSketch library\Firmata.h
+</pre>
+
+You will need to override the default file that ship with Arduino as these library firmata files also add support for String argument passing to allow is to run custom C functions from Node.js.
+In Windows override the files at:
+
+<pre>
+C:\Program Files (x86)\Arduino\libraries\Firmata\src
+</pre>
+
+In Mac, I am not sure where are they located, should be within the installation directory of the Arduino IDE installed App.
+
+Next, we will burn in the FirmatNodeJs.ino C sketch into Arduino
+
+In the Arduino IDE App select to open the sketch of:
+<pre>
+FirmatNodeJs/FirmatNodeJs.ino
+</pre>
+
+In the Arduino IDE App select Tools > Port > and the select the Com port or IP address of the Arduino
+
+Next, click update and upload to burn in the Firmata driver onto the MCU
+
+Once it's done, rebboot the Arduino
+
+At this point you should be able to ssh back onto the Arduino and when you do
+<pre>
+cd /root
+ls -al
+</pre>
+
+you should see a bunch of files, if you do, you are in good shape. If you don't you must have missed a step.
 
 
-
-
-
-
-
+Select the Arduino is the device type in the Arduino IDE:
 downloading the bin
 burning it
 cygwin ssh scp
