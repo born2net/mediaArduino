@@ -240,16 +240,14 @@ node test_firmata.js
 </pre>
 
 You should see the text below and the red LED on pin 13 should blink a few times.
+<br/>
 If you did, GOOD JOB, the hard part is behind you.
 
 <img src="http://www.digitalsignage.com/_images/ardsc3.png"/>
 
 ---------------------------------------
 
-
-
-
-Startup scripts and the Watchdog
+So what's installed on the Linux OS?
 ---------------------------------------
 
 init.d
