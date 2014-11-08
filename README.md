@@ -121,7 +121,7 @@ First we will begin by updating the firmware of the Arduino to version 1.5.2, so
 Next, insert the Micro SD 16GB with the file:
 <pre>
 openwrt-ar71xx-generic-yun-16M-squashfs-sysupgrade.bin
-</prev>
+</pre>
 
 that's in the root drive (not in any sub-directory) into the Arduino and reboot.
 
