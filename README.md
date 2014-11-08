@@ -232,7 +232,7 @@ ls -al
 </pre>
 
 you should see a bunch of files, if you do, you are in good shape. If you don't you must have missed a step.
-Now lets test Node.js can communicate with the Micro controller. Type:
+Now lets test that Node.js can communicate with the Micro controller. Type:
 
 <pre>
 cd /root/dev
@@ -250,8 +250,48 @@ If you did, GOOD JOB, the hard part is behind you.
 So what's installed on the Linux OS?
 ---------------------------------------
 
-init.d
-firmata wachdog and serial driver
+Next we will review some of the cool things you got ad part of the pre-installed Linux OS:
+
+- serial driver and node modules
+- startup script and watchdog
+- socket communication
+- Digital Signage web server
+
+<h5>Serial driver</h5>
+In /usr/lib/node_modules/serial you will find the node.js serial driver that is the basis for all serial communication.
+Also, in /usr/lib/node_modules/ you will find other node modules including express, firmata, underscore and others.
+
+<h5>startup script and watchdog</h5>
+under /etc/init.d/arduinostart you will find the daemon that kicks in when the Arduino is started.
+It will in turn run /root/start.js which build the path to the serial bridge.
+Inside the Sketch C code that runs on top of the MCU we have a special statement which reads:
+
+<pre>
+delay(10000);
+  Serial1.begin(9600); // Set the baud.
+  while (!Serial1) {}
+</pre>
+
+Which will wait for U-boot to finish startup.  Consume all bytes until we are done.
+While this hack works 95% of the time, there is still a slight chance the Arduino serial bridge will fail.
+But not to worry, if it does fail, our watchdog which runs from start.js through /root/initSerial.js monitors the serial bridge.
+If a connection was not establish within the given time, the Arduino Linux and MCU are restarted and messages are logged onto /root/messages.log.
+So within 1-2 boots the Serial bridge will recover, so you can restart your Arduino with confidence knowing you will always have a connection between the Linux OS and MCU.
+
+<h5>socket sample script</h5>
+The Arduino includes a sample socket script which connects to a socket.io sever (http://socket.io).
+So if you ever want to connect to a remote socket.io node.js server so you can bypass your LAN firewall and not have to create router maps, this is a great solution to do so.
+
+<h5>start.js Express Digital Signage web server</h5>
+The Express server will listen to commands from the SignagePlayer gateway so it can flip I/O pins from the SignagePlayer event commands.
+
+<h5>Sample web application to send remote commands</h5>
+One of the great things about using the SignagePlayer as a LAN server (gateway) is the ability to securely send remote commands to the Arduino over the web.
+All without having to open any firewalls or map internal IP / port addresses.
+Because the SignagePlayer runs with as a LAN server, and since it already connects with a socket to the remote mediaCLOUD, it can also pass through it events destined to the Arduino.
+To learn more about this functionally be sure to checkout the video tutorial at: http:/blabla
+
+
 
 
 Adding custom C code on MCU
