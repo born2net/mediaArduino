@@ -278,19 +278,19 @@ But not to worry, if it does fail, our watchdog which runs from start.js through
 If a connection was not establish within the given time, the Arduino Linux and MCU are restarted and messages are logged onto /root/messages.log.
 So within 1-2 boots the Serial bridge will recover, so you can restart your Arduino with confidence knowing you will always have a connection between the Linux OS and MCU.
 
-<h5>socket sample script</h5>
+<h5>/root/clientio.js socket sample script</h5>
 The Arduino includes a sample socket script which connects to a socket.io sever (http://socket.io).
 So if you ever want to connect to a remote socket.io node.js server so you can bypass your LAN firewall and not have to create router maps, this is a great solution to do so.
 
-<h5>start.js Express Digital Signage web server</h5>
-The Express server will listen to commands from the SignagePlayer gateway so it can flip I/O pins from the SignagePlayer event commands.
+<h5>/root/start.js Express Digital Signage web server</h5>
+/root/start.js is the main script that runs on boot-up.
+The included Express server will listen to commands from the SignagePlayer gateway so it can flip I/O pins from the SignagePlayer event commands.
 
 <h5>Sample web application to send remote commands</h5>
 One of the great things about using the SignagePlayer as a LAN server (gateway) is the ability to securely send remote commands to the Arduino over the web.
 All without having to open any firewalls or map internal IP / port addresses.
 Because the SignagePlayer runs with as a LAN server, and since it already connects with a socket to the remote mediaCLOUD, it can also pass through it events destined to the Arduino.
 To learn more about this functionally be sure to checkout the video tutorial at: http:/blabla
-
 
 
 
