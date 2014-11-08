@@ -232,12 +232,21 @@ ls -al
 </pre>
 
 you should see a bunch of files, if you do, you are in good shape. If you don't you must have missed a step.
-Now lets test that Node.js can communicate with teh MCU. Type:
+Now lets test Node.js can communicate with the Micro controller. Type:
+
+<pre>
+cd /root/dev
+node test_firmata.js
+</pre>
+
+You should see the text below and the red LED on pin 13 should blink a few times.
+If you did, GOOD JOB, the hard part is behind you.
 
 <img src="http://www.digitalsignage.com/_images/ardsc3.png"/>
 
-You should text as above and the red LED on pin 13 should blink a few times.
-If it did, GOOD JOB, the hard part is behind you.
+---------------------------------------
+
+
 
 
 Startup scripts and the Watchdog
