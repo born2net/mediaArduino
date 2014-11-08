@@ -193,12 +193,11 @@ Download from this git repository the file of:
 FirmatNodeJs/FirmatNodeJs.ino
 </pre>
 
-and put it in a directory on youe Mac / PC of: FirmatNodeJs/FirmatNodeJs.ino
+and put it in a directory on your Mac or PC of: FirmatNodeJs/FirmatNodeJs.ino
 
 you will also need to download 3 more files:
 
 <pre>
-firmataSketch library\
 firmataSketch library\Boards.h
 firmataSketch library\Firmata.cpp
 firmataSketch library\Firmata.h
@@ -224,7 +223,7 @@ In the Arduino IDE App select Tools > Port > and the select the Com port or IP a
 
 Next, click update and upload to burn in the Firmata driver onto the MCU
 
-Once it's done, rebboot the Arduino
+Once it's done, reboot the Arduino
 
 At this point you should be able to ssh back onto the Arduino and when you do
 <pre>
@@ -233,13 +232,12 @@ ls -al
 </pre>
 
 you should see a bunch of files, if you do, you are in good shape. If you don't you must have missed a step.
+Now lets test that Node.js can communicate with teh MCU. Type:
 
+<img src="http://www.digitalsignage.com/_images/ardsc2.png"/>
 
-Select the Arduino is the device type in the Arduino IDE:
-downloading the bin
-burning it
-cygwin ssh scp
-ftp
+You should text as above and the red LED on pin 13 should blink a few times.
+If it did, GOOD JOB, the hard part is behind you.
 
 
 Startup scripts and the Watchdog
