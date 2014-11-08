@@ -110,56 +110,49 @@ When you first get your new Arduino Yun it will come configured as a WIFI hot sp
 This means you can connect to it directly using a mobile phone or tablet as it will serve an IP over DHCP so you connect to its built in web server.
 You can follow these instructions to initially setup your Arduino Yun: http://arduino.cc/en/Guide/ArduinoYun (per Windows and Mac).
 
-Next, we need to upgrade the Firmware on the Arduino Yun to 1.5.2, so copy this updated firmware file: http://alturl.com/8ivfo
-onto the root micro SD card, insert it into the Arduino and reboot.
-
-Open a up a web browser and point it to the address of the Arduino Yun (remember it is still a hot spot serving you an IP address).
-You can most likely reach it via the IP address of: 192.168.240.1 or via http://arduino.local
-
-Next, select to upgrade the firmware and reboot (it's the [RESET] at the bottom of the web page)
-
-<img src="http://www.digitalsignage.com/_images/ardsc2.png"/>
-
-
-Next, when the device has been updated with the latest firmware, configure it to connect to your wifi network and once again reboot it.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Next, you will need a Micro SD card. You should get a 16GB Micro SD card.
 
 Why 16GB you ask? since the image we built was created from an 8GB micro SD, there is a chance that if you also get an 8GB micro SD that has a size that is a few bytes smaller, the image will not fit.
 So to play it safe, get the next level up micro SD (16GB) and you won't have an issue burning the image in (it's only like $4.00 more, crazy how cheap memory is these days).
 The binary image already has all of the Linux configuration on it including drivers, applications and configs, so you will not have to setup anything special on the Linux side.
 
-So to proceed with the binary image, first download it from: http://alturl.com/ytdxo
+First we will begin by updating the firmware of the Arduino to version 1.5.2, so copy this updated firmware file: http://alturl.com/8ivfo onto the root micro SD card.
 
-To burn the binary image we will use a HDD Sector copy for Windows. Download it from: http://alturl.com/k333x
+Next, insert the Micro SD 16GB with the file:
+<pre>
+openwrt-ar71xx-generic-yun-16M-squashfs-sysupgrade.bin
+</prev>
 
-Install the exe, run it, and select source from file, and select the downloaded file of: PerfectArduino.imgc
+that's in the root drive (not in any sub-directory) into the Arduino and reboot.
 
-next, click 'next' to select the target device, and pick the Micro SD and click start to begin the burning of the OS image onto the micro SD card.
+Open a up a web browser and point it to the address of the Arduino Yun (remember it is still a hot spot serving you an IP address).
+You can most likely reach it via the IP address of: 192.168.240.1 or via http://arduino.local
+
+Next, select to upgrade the firmware and reboot (it's the [RESET] at the bottom of the web page), it wil take a few minutes for the update to complete.
+
+<img src="http://www.digitalsignage.com/_images/ardsc2.png"/>
+
+Next, when the device has been updated with the latest firmware, configure it to join your wifi network (click the configure button on the web interface) and once again reboot it.
+
+Next, we will burn the Linux OS onto the Micro SD card. Download it from: http://alturl.com/ytdxo
+
+To burn the binary image we will use a HDD Sector copy application for Windows. Download it from: http://alturl.com/k333x
+
+Install the HDDRawCopy1.10Setup.exe
+
+Next you will need to connect the Micro SD (16GB) to the PC, it should come up as a drive letter in Windows, like F:\ or something of that sort.
+
+Next, launch HDDRawCopy, select source from file (double click) and select the downloaded file of: PerfectArduino.imgc
+
+Next, click 'next' to select the target device, which will be the drive letter of the Micro SD (be sure tp select the correct drive letter or you may lose data by formatting the wrong device).
+
+Next, pick the Micro SD and click start to begin the burning process of the Linux OS image onto the micro SD card, this will take a little while.
 
 <img src="http://www.digitalsignage.com/_images/burnsd.png"/>
 
-while the burning process is taking place, go ahead and SSH into the Arduino and we will need to edit
+Once it's done you can remove the micro SD from your PC and plug it into the Arduino.
 
-once the task has completed, insert the micro SD card onto the Arduino and reboot the Arduino.
-
-
-
-
-Once your Arduino Yun is on WIFI or ethernet network, you will need to know it's IP address.
+Now that the Arduino is on your WIFI or Ethernet network, you will need to know it's IP address.
 The best way to figure this out is to install the Arduino IDE, from: http://arduino.cc/en/Main/Software
 
 Once installed, connect the Arduino to your PC or Mac via USB cable and in the Arduino IDE select, Tools > Port to see it's new IP address.
@@ -168,11 +161,26 @@ Once installed, connect the Arduino to your PC or Mac via USB cable and in the A
 
 As you can see my IP address is 192.168.1.94 (yours will be different).
 
-Next you need to ssh (login) onto the Linux side of the Arduino. In Mac ssh is part of the OS, in Windows, you can download cygwin which comes with SSH (https://www.cygwin.com/)
+Next you need to ssh (login) onto the Linux side of the Arduino. In Mac ssh is part of the OS, in Windows, you can download cygwin which comes with ssh (https://www.cygwin.com/)
 
+Once you confirm your Windows or Mac has the ssh command, execute:
 <pre>
 ssh root@192.168.1.94
 </pre>
+
+Default password is: arduino
+
+Select 'yes' when ssh prompts you to remember the host.
+
+Next, while logged into the Arduino Linux, run the command:
+
+<pre>
+cp /.extroot.md5sum /tmp/overlay-disabled/etc/extroot.md5sum
+</pre>
+
+Next, we need to install the Firmata driver onto the MCU of the Arduino so we can communicate with it from the node.js using the Node.js Firmata.js package.
+
+Download from this git repository
 
 
 
