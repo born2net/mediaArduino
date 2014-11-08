@@ -369,8 +369,12 @@ Sending commands over the web
 
 Another sample application included in the Linux OS image is a web application that allows anyone to develop a Javascript based UI to send events directly
 to the SignagePlayer gateway and to the Arduino.
+
 With the API anyone can develop any solution to send commands from a mobile phone and be able to control an internal LAN Arduino without having to worry about configuring a firewall or port mapping.
 Because the SignagePlayer LAN server allows for the secure pass through into your LAN.
+
+You will find the application under /root/www/web_api.html and /root/www/web_api.js
+
 
 What's next
 ---------------------------------------
