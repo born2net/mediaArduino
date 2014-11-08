@@ -297,19 +297,80 @@ To learn more about this functionally be sure to checkout the video tutorial at:
 Adding custom C code on MCU
 ---------------------------------------
 
-send and receive strings
+If you look at the C code in our Arduino Firmata sketch:
+
+<pre>
+FirmatNodeJs/FirmatNodeJs.ino
+</pre>
+
+you will notice that we added a snippet of C code:
+
+<pre>
+Firmata.attach(STRING_DATA, stringCallback);
+</pre>
+
+this allows you to send any arbitrary string from the Node.js side, and have it call the function:
+
+<pre>
+void stringCallback(char *myString)
+{
+
+    if (myString == "do_something") {
+        // send a string back to node.js Firmata driver
+        Firmata.sendString(myString);
+     }
+}
+</pre>
+
+and so you can add additional custom C code on the MCU while still having the convenience of using node.js for the logic part of your code.
+
+Also if you wanted to send back a string (data) back to node.js from the MCU, simple use the function:
+
+<pre>
+Firmata.sendString(myString);
+</pre>
+
+which in turn will be received on the node.js via the function:
+
+<pre>
+ board.on('string',function(string){
+        console.log('firmata log: ' + string);
+    });
+</pre>
+
+Checkout /root/dev/test_firmata.js for a sample script on how to send strings to the MCU and receive back from the MCU.
 
 
 Arduino and Digital Signage
 ---------------------------------------
+One of the great benefits of using Arduino, is its seamless integration with the Digital Signage SignagePlayer from MediaSignage.
+Once you enable the LAN Server:
 
-listening to commands
-sending
+IMG
+
+The SignagePlayer will essentially become a gateway to sending and receiving events.
+This hsa the benefit of allowing secure socket commands to be sent to the SignagePlayer from across the web and onto the SignagePlayer.
+From the SignagePlayer, the events will propagate to the appropriate Arduino.
+
+To learn more about setting the SignageStudio to send events to specific SignagePlayers / Arduino IP addresses review the video at:
+http://www.digitalsignage.com/_html/signage_video.html?videoNumber=arduino
+
+If you inspect the code in /root/start.js you will notice the it comes with a built in Express web server.
+The server is pre-configured to listen to events coming from the SignagePlayer and act upon these evets.
+
+Of course you can modify it to do whatever you want, but by default if you send it an event of: turn13on or turn13off
+it will toggle the LED connected to pin 13.
+
+[PUT EXPRESS CODE HERE]
 
 
 Sending commands over the web
 ---------------------------------------
 
+Another sample application included in the Linux OS image is a web application that allows anyone to develop a Javascript based UI to send events directly
+to the SignagePlayer gateway and to the Arduino.
+With the API anyone can develop any solution to send commands from a mobile phone and be able to control an internal LAN Arduino without having to worry about configuring a firewall or port mapping.
+Because the SignagePlayer LAN server allows for the secure pass through into your LAN.
 
 What's next
 ---------------------------------------
