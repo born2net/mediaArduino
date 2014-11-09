@@ -1,4 +1,10 @@
-console.log('starting...');
+#!/usr/bin/node
+/**
+ testFirmata.js
+ Firmata driver and simple node.js web server (non Express), used for sandboxing.
+ Also includes demo of calling a custom C Sketch function: board.seanBlinker(125, 125);
+ as well as sending a string to the MCU: board.sendString('123456790ABCD');
+ **/
 
 var ledPin = 13;
 var firmata = require('firmata');
@@ -43,6 +49,5 @@ var board = new firmata.Board("/dev/ttyATH0", function (err) {
         response.write("The value written was: " + params.value);
         response.end();
     }.bind(this)).listen(8080);
-
     console.log('Listening on port 8080 ...');
 });

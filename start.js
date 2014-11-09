@@ -27,7 +27,6 @@ child.stdout.on('data', function (msg) {
     if (msg == 'pass') {
         console.log('serial successfully initialized');
         clearInterval(intervals);
-        serialReady = true;
         fs.writeFileSync(logFile, 0, 'utf8');
         loadFirmata();
     } else {
@@ -91,6 +90,9 @@ function loadFirmata(){
     loadServer();
 }
 
+// curl 192.168.1.94:5000/mcu13:1
+// curl 192.168.1.94:5000/webapp
+
 function loadServer(){
     var express = require("express");
     var app = express();
@@ -125,4 +127,10 @@ function loadServer(){
         console.log("Listening on " + port);
     });
 
+}
+
+
+function getTime() {
+    var t = new Date();
+    return t.getHours() + ':' + t.getMinutes() + ':' + t.getSeconds();
 }

@@ -1,5 +1,11 @@
 #!/usr/bin/node
 
+/**
+ cylonButtonLED.js
+ Powered by the Robotics cylon library from: http://cylonjs.com
+ Sample script that uses the underline firmata / serial driver to control LED, Servo, relay and button.
+ **/
+
 var Cylon = require('cylon');
 
 var total = 0;
@@ -24,9 +30,11 @@ Cylon.robot({
   }
 }).start();
 
-
-
-
+/**
+ Run multiple drivers using the Cylon library
+ @method cylonMultipleDrivers
+ @return
+ **/
 function cylonMultipleDrivers() {
 
   var Cylon = require('cylon');

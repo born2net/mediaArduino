@@ -1,10 +1,21 @@
-var firmata = require('firmata');
+#!/usr/bin/node
+/**
+ fireAlarm.js
+ Example firmata driver script with multiple inputs / outputs.
+ Used to listen to a flame sensor and trigger buzzer and LED on fire trigger.
+ Also includes button override to trigger events.
+ In addition we also use a reed switch to sense when a magnet is within proximity to trigger events.
+ When events are triggered, we use curl to post data to remote IP / PORT 192.168.1.81:9999, a SignagePlayer
+ LAN server gateway (replace with your IP address / port set in the SignageStudio).
+ **/
 var exec = require('child_process').exec;
 var _ = require('underscore');
 
 var board = new firmata.Board("/dev/ttyATH0", function (err) {
 
     console.log('fire detection on');
+
+    /* print pin configuration */
     // console.log(board.pins);
 
     board.on('string', function (string) {
@@ -64,18 +75,6 @@ var board = new firmata.Board("/dev/ttyATH0", function (err) {
         }
         return false;
     });
-
-    /*
-    board.digitalRead(MAGNET, function (e) {
-        if (e == 1) {
-            board.digitalWrite(BUZZER, board.HIGH);
-            console.log('Do you like the smell?')
-        } else {
-            board.digitalWrite(BUZZER, board.LOW);
-            console.log('smell me please!')
-        }
-    });
-    */
 
     setTimeout(function () {
         board.digitalWrite(LEDPIN, board.LOW);

@@ -1,3 +1,10 @@
+#!/usr/bin/node
+/**
+ socketIOclient.js
+ The script adds support for socket.io communication to node.js socket.io (http://socket.io).
+ Tested against version Socket.io 0.9 only (not tested against 1.0)
+ The script would not be possible with the pre-compiled mips binary socket, lots of thanks to: http://fibasile.github.io/new-node-modules.html
+ **/
 var client = require('socket.io-client');
 var _ = require('underscore');
 var firmata = require('firmata');
@@ -10,7 +17,7 @@ var ledPin = 13;
 var boardRead = false;
 
 io.on('registerRequest', function (data) {
-    io.emit('registerReply', { sourceID: nodeSourceID });
+    io.emit('registerReply', {sourceID: nodeSourceID});
     io.emit('socketList', null);
 });
 
@@ -21,7 +28,7 @@ io.on('sendMessage', function (data) {
 });
 
 io.on('socketList', function (data) {
-    _.forEach(data,function(node,a) {
+    _.forEach(data, function (node, a) {
         console.log('rx socket ' + node.sourceID);
         var sourceID = node.sourceID;
         if (sourceID == nodeSourceID) {
@@ -43,7 +50,6 @@ io.on('socketDisconnect', function (data) {
 function addDevice(i_sourceID, i_me) {
 }
 
-
 var board = new firmata.Board("/dev/ttyATH0", function (err) {
     board.on('string', function (string) {
         console.log('firmata log: ' + string);
@@ -62,8 +68,7 @@ var board = new firmata.Board("/dev/ttyATH0", function (err) {
     }, 700);
 });
 
-
-liteUp = function(){
+liteUp = function () {
     if (!boardRead)
         return;
     setTimeout(function () {
@@ -83,39 +88,38 @@ liteUp = function(){
     }, 1500);
 };
 
+// more samples below:
 
 /*
-socket.on('connect', function (data) {
-    console.log('Connected.....');
+ socket.on('connect', function (data) {
+ console.log('Connected.....');
 
-    socket.emit('news', { my: 'data' });
+ socket.emit('news', { my: 'data' });
 
-    socket.on('disconnect', function(){
-        console.log('disconnected.....');
-    });
+ socket.on('disconnect', function(){
+ console.log('disconnected.....');
+ });
 
-    socket.on('news', function (data) {
-        console.log(data.hello);
-        socket.emit('my other event', { my: 'data' });
-    });
+ socket.on('news', function (data) {
+ console.log(data.hello);
+ socket.emit('my other event', { my: 'data' });
+ });
 
-    socket.on('latest', function (data) {
-        console.log('got latest news ' + data.more);
-        socket.emit('news', { my: 'data' });
-    });
+ socket.on('latest', function (data) {
+ console.log('got latest news ' + data.more);
+ socket.emit('news', { my: 'data' });
+ });
 
-});
+ });
 
-*/
+ */
 
-
-// npm install socket.io-client@0.9.16 aa aaa
-
+// npm install socket.io-client@0.9.16
 /*
-var io = require('socket.io-client'),
-    socket = io.connect('https://secure.digitalsignage.com', {
-        port: 442
-    });
-socket.on('connect', function () { console.log("socket connected"); });
-socket.emit('private message', { user: 'me', msg: 'whazzzup?' });
-    */
+ var io = require('socket.io-client'),
+ socket = io.connect('https://secure.digitalsignage.com', {
+ port: 442
+ });
+ socket.on('connect', function () { console.log("socket connected"); });
+ socket.emit('private message', { user: 'me', msg: 'whazzzup?' });
+ */
