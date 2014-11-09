@@ -19,14 +19,13 @@ var board = new firmata.Board("/dev/ttyATH0", function (err) {
     board.seanBlinker(125, 125);  // value 1-127
 
 
-    /*board.digitalWrite(ledPin, board.HIGH);
+    board.digitalWrite(ledPin, board.HIGH);
     setTimeout(function () {
         board.digitalWrite(ledPin, board.LOW);
     }, 2000);
     setTimeout(function () {
         board.digitalWrite(ledPin, board.HIGH);
     }, 3000);
-    */
 
     var url = require('url');
     var http = require('http');
