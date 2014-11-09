@@ -1,12 +1,15 @@
 #!/usr/bin/node
 
-/********************************************
- Start off script which will load Firmata
- on Arduino and allow for micro script also
- includes a watchdog that will
- auto restart Arduino on failure to connect
- to bridge over serial1
- *********************************************/
+/**
+ start.js
+ Start off script which will load the Firmata driver on Arduino Yun.
+ A watchdog is included so we will reset MCU if bridge does not connect Linux and MCU.
+ The script also includes an Express Web server allowing to receive and transmit post commands which can be used to communicate with remote gateway just as the SignagePlayer LAN server.
+
+ Test script post via (change IP to your Arduino IP address):
+ curl 192.168.1.94:3840/mcu13:1
+ curl 192.168.1.94:3840/webapp
+ **/
 
 var firmata = require('firmata');
 var fs = require('fs');
@@ -90,9 +93,6 @@ function loadFirmata(){
     loadServer();
 }
 
-// curl 192.168.1.94:5000/mcu13:1
-// curl 192.168.1.94:5000/webapp
-
 function loadServer(){
     var express = require("express");
     var app = express();
@@ -105,7 +105,7 @@ function loadServer(){
         var pin = (req.params.pin).split(':')[0];
         var state = (req.params.pin).split(':')[1];
 
-        console.log('setting pin ' + pin + ' ' + state);
+        console.log('setting pin ' + pin + ' ' + state + ' ' + getTime());
 
         if (state == 1) {
             board.digitalWrite(pin, board.HIGH);
@@ -128,7 +128,6 @@ function loadServer(){
     });
 
 }
-
 
 function getTime() {
     var t = new Date();
