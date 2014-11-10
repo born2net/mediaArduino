@@ -359,7 +359,7 @@ Checkout /root/dev/test_firmata.js for a sample script on how to send strings to
 
 Arduino & Digital Signage
 ---------------------------------------
-One of the great benefits of using Arduino, is its seamless integration with the free Digital Signage service from http:://www.digitalsignage.com.
+One of the great benefits of using Arduino, is its seamless integration with the free Digital Signage service from http://www.digitalsignage.com.
 All you need is to install the SignagePlayer, and configure the LAN Server.
 
 Once you do, you will be able to send and receive evets / triggers from Arduino, as you can see below.
