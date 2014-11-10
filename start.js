@@ -58,9 +58,9 @@ var intervals = setInterval(function () {
 
 function rebootDevice() {
     console.log('rebooting..');
-    //spawn('reset-mcu');
-    //spawn('reboot');
-    //process.exit();
+    spawn('reset-mcu');
+    spawn('reboot');
+    process.exit();
 }
 
 function updateRebootCycles() {
