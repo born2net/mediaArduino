@@ -463,16 +463,16 @@ This is because you will need to give nodejs more memory to do real time debuggi
 created an alias env script for node which gives it that extar working room:
 
 The normal node runs as:
-`
+
+```
 NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_new_space_size=2048 --max_executable_size=5 --gc_global --gc_interval=100 $@
-`
+```
 
 while nodem with extra memory room runs as:
 
-`
+```
 NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_executable_size=50 --gc_global --gc_interval=100 $@
-</pre>
-`
+```
 
 
 What's next
