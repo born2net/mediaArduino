@@ -275,7 +275,7 @@ delay(10000);
 Which will wait for U-boot to finish startup.  Consume all bytes until we are done.
 While this hack works 95% of the time, there is still a slight chance the Arduino serial bridge will fail.
 But not to worry, if it does fail, our watchdog which runs from start.js through /root/initSerial.js monitors the serial bridge.
-If a connection was not establish within the given time, the Arduino Linux and MCU are restarted and messages are logged onto /root/messages.log.
+If a connection was not establish within the given time, the Arduino Linux and MCU are restarted and messages are logged onto /tmp/start.log.
 So within 1-2 boots the Serial bridge will recover, so you can restart your Arduino with confidence knowing you will always have a connection between the Linux OS and MCU.
 
 <h5>/root/clientio.js socket sample script</h5>

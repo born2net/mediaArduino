@@ -31,7 +31,10 @@ child.stdout.on('data', function (msg) {
         console.log('serial successfully initialized');
         clearInterval(intervals);
         fs.writeFileSync(logFile, 0, 'utf8');
-        loadFirmata();
+        setTimeout(function(){
+            loadFirmata();
+        },10000)
+
     } else {
         updateRebootCycles();
     }
@@ -55,9 +58,9 @@ var intervals = setInterval(function () {
 
 function rebootDevice() {
     console.log('rebooting..');
-    spawn('reset-mcu');
-    spawn('reboot');
-    process.exit();
+    //spawn('reset-mcu');
+    //spawn('reboot');
+    //process.exit();
 }
 
 function updateRebootCycles() {
