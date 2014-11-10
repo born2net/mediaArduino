@@ -1,4 +1,4 @@
-<h1>Arduino Yun with node.js & Digital Signage integration (IoT)</h1>
+<h1>Arduino Yun with node.js & Digital Signage Internet Of Things</h1>
 ==========
 
 
