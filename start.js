@@ -56,6 +56,10 @@ var intervals = setInterval(function () {
     }
 }, 1000);
 
+/**
+ rebootDevice
+ reboot micro controller and Linux
+ **/
 function rebootDevice() {
     console.log('rebooting..');
     spawn('reset-mcu');
@@ -63,6 +67,9 @@ function rebootDevice() {
     process.exit();
 }
 
+/**
+ updateRebootCycles
+ **/
 function updateRebootCycles() {
     var fileExists = fs.existsSync(logFile);
     if (!fileExists) {
@@ -81,6 +88,11 @@ function updateRebootCycles() {
     rebootDevice();
 }
 
+/**
+ loadFirmata
+ Load the serial driver for Firmata and connect to ttyATH0 to serial over pin 0/1
+ Once serial connection is available we load the Express web server
+**/
 function loadFirmata(){
     board = new firmata.Board("/dev/ttyATH0", function (err) {
 
@@ -96,6 +108,11 @@ function loadFirmata(){
     loadServer();
 }
 
+/**
+ loadServer
+ Load Express web server
+ Listen for remote commands and parse pin/state from URL POST
+ **/
 function loadServer(){
     var express = require("express");
     var app = express();

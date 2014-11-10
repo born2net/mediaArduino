@@ -358,10 +358,37 @@ http://www.digitalsignage.com/_html/signage_video.html?videoNumber=arduino
 If you inspect the code in /root/start.js you will notice the it comes with a built in Express web server.
 The server is pre-configured to listen to events coming from the SignagePlayer and act upon these evets.
 
-Of course you can modify it to do whatever you want, but by default if you send it an event of: turn13on or turn13off
+Of course you can modify it to do whatever you want, but by default if you send it an event using curl:
+
+<pre>
+curl 192.168.1.94:3840/mcu13:1
+curl 192.168.1.94:3840/mcu13:0
+</pre>
+
 it will toggle the LED connected to pin 13.
 
-[PUT EXPRESS CODE HERE]
+The code that manages the pin number and state is part of the example included in start.js:
+
+<pre>
+app.all("/mcu:pin", function (req, res) {
+     if (!serialReady) {
+         res.send("NOTREADY");
+         return;
+     }
+     var pin = (req.params.pin).split(':')[0];
+     var state = (req.params.pin).split(':')[1];
+
+     console.log('setting pin ' + pin + ' ' + state + ' ' + getTime());
+
+     if (state == 1) {
+         board.digitalWrite(pin, board.HIGH);
+     } else {
+         board.digitalWrite(pin, board.LOW);
+     }
+     res.send("OK");
+
+ });
+</pre>
 
 
 Sending commands over the web
@@ -379,18 +406,29 @@ You will find the application under /root/www/web_api.html and /root/www/web_api
 What's next
 ---------------------------------------
 
-sample code that's included  like clientio.js for socket.io communication
-u can cylon, we have sample script
+In the source code you will find additional useful code and libraries which include:
+
+- cylonExample: working example powered by the robotics Javascript cylon library from: http://cylonjs.com
+- echo.js: a simple way to interact between the MCU and Linux using stdin and stdout pipes
+- fireAlarm.js: Javascript example using multiple INPUT / OUTPUT pins and sending curl post
+- humanSensor.js: example using a human detector sensor
+- restart.sh: bash to restart Arduino gracefully
+- socketIOclient.js: a client library for interacting with socket.io node.js server, includes binary ws
+- testFirmata.js: general test script for Firmata and simple node.js web server
+- wifiResetAndReboot: reset shell script
+- diskSpaceExpander: Arduino storage expander onto external micro SD (no need if you are using our image)
+- sysUpgradeImage: upgrade Arduino to release 1.5.2 (check Arduino.cc for newer builds)
+- initSerial.js: boot up test for MCU to Linux bridge connection
+
 
 Resources:
 ------------------------------------------------------------------------
-- node js
-- cylon
+- node.js: http://nodejs.org
+- cylon: http://cylonjs.com
 - firmata.js: https://github.com/jgautier/firmata
-- arduino
-- digitalsignage.com
-- http://sunfounder.com/
-
+- arduino: arduino.cc
+- digitalsignage.com: http://www.digitalsignage.com (free digital signage)
+- start kits: http://sunfounder.com
 
 License:
 ------------------------------------------------------------------------
