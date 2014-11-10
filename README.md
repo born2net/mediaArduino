@@ -411,6 +411,9 @@ http://YOUR_ARDUINO_IP:3840/webcommands.html
 If you want to test this script online, visit: http://www.digitalsignage.com/arduino/webcommands.html
 Enter your SignageStudio login name, password and station id.
 
+Remember to also follow this video tutorial on how to setup the SignagePlayer as a LAN server:
+http://www.digitalsignage.com/_html/signage_video.html?videoNumber=arduino
+
 
 What's next
 ---------------------------------------
