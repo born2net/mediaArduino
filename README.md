@@ -247,6 +247,18 @@ If you did, GOOD JOB, the hard part is behind you.
 
 ---------------------------------------
 
+Is it all working?
+---------------------------------------
+
+The best way to check if eveyrthing is working is to run testFirmata
+
+<pre>
+/root/dev/testFirmata.js
+</pre>
+
+<img src="http://www.digitalsignage.com/_images/ardsc5.gif"/>
+
+
 So what's installed on the Linux OS?
 ---------------------------------------
 
