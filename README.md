@@ -357,12 +357,16 @@ which in turn will be received on the node.js via the function:
 Checkout /root/dev/test_firmata.js for a sample script on how to send strings to the MCU and receive back from the MCU.
 
 
-Arduino & Digital Signage (FREE DigitalSignage.com)
+Arduino & Digital Signage
 ---------------------------------------
-One of the great benefits of using Arduino, is its seamless integration with the Digital Signage SignagePlayer from MediaSignage.
-Once you enable the LAN Server:
+One of the great benefits of using Arduino, is its seamless integration with the free Digital Signage service from http:://www.digitalsignage.com.
+All you need is to install the SignagePlayer, and configure the LAN Server.
+
+Once you do, you will be able to send and receive evets / triggers from Arduino, as you can see below.
 
 <img src="http://www.digitalsignage.com/_images/ardsc6.gif"/>
+
+Pretty cool ha?
 
 The SignagePlayer will essentially become a gateway to sending and receiving events.
 This hsa the benefit of allowing secure socket commands to be sent to the SignagePlayer from across the web and onto the SignagePlayer.
