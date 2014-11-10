@@ -33,7 +33,7 @@ child.stdout.on('data', function (msg) {
         fs.writeFileSync(logFile, 0, 'utf8');
         setTimeout(function(){
             loadFirmata();
-        },10000)
+        },20000)
 
     } else {
         updateRebootCycles();

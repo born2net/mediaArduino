@@ -415,6 +415,39 @@ Remember to also follow this video tutorial on how to setup the SignagePlayer as
 http://www.digitalsignage.com/_html/signage_video.html?videoNumber=arduino
 
 
+Debugging node.js on Arduino Yun
+---------------------------------------
+
+One of the great benefits in developing in Node.js Javascript vs in C, is the ability to debug in real time your node.js code.
+You can use the built in debugger in node.js, but we highly recommend using WebStorm or IntelliJ for much better
+work flow: (https://www.jetbrains.com/webstorm/)
+
+In WebStorm config the node.js as such:
+
+<IMG>
+
+next, you to to create a ssh tunnel, which is easy to use (again in Windows install cygwin for the open source ssh client)
+
+<pre>
+nodem --debug-brk --nolazy ./testFirmata.js
+</pre>
+
+notice that we are using nodem (m = more memory) instead of the standard node executible.
+This is because you will need to give nodejs more memory to do real time debugging, so we just
+created an alias env script for node which gives it that extar working room:
+
+The normal node runs as:
+<pre>
+NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_new_space_size=2048 --max_executable_size=5 --gc_global --gc_interval=100 $@
+</pre>
+
+while nodem with extra memory room runs as:
+
+<pre>
+NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_executable_size=50 --gc_global --gc_interval=100 $@
+</pre>
+
+
 What's next
 ---------------------------------------
 
