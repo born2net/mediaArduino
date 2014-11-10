@@ -1,0 +1,51 @@
+<html>
+<body>
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://galaxy.signage.me/Code/js/stations.js"></script>
+
+
+<style>
+    input {
+        width: 200px;
+    }
+
+    label {
+        width: 70px;
+    }
+    div {
+        padding-left: 20px;
+    }
+</style>
+<script>
+
+    $(function () {
+
+        $('#on').click(function (e) {
+            sendCommand("galaxy.signage.me", $('#user').val(), $('#pass').val(), $('#station').val(), "LEDON", "1")
+            alert('command sent');
+        });
+
+        $('#off').click(function (e) {
+            sendCommand("galaxy.signage.me", $('#user').val(), $('#pass').val(), $('#station').val(), "LEDOFF", "1")
+            alert('command sent');
+        });
+    });
+
+</script>
+</head>
+<hr/>
+<p>Demo of sending events from the Web to the mediaCLOUD and onto the SignagePlayer LAN server</p>
+<p>This also allows for remote controlling <b>Internet Of Things</b> (such as Arduino) securely, even while using a Firewall and private IPs</p>
+<hr/>
+<br/>
+<label>user </label><input id="user" value="your_user@example.com"/><br/>
+<label>pass </label><input id="pass" type="password" value="your_pass"/><br/>
+<label>station </label><input id="station" value="your_station_id"/><br/>
+<hr/>
+<div>
+<button id="off">Send event string: LEDOFF</button>
+<button id="on">Send event string: LED</button>
+</div>
+</body>
+</html>

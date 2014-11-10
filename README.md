@@ -264,7 +264,7 @@ Also, in /usr/lib/node_modules/ you will find other node modules including expre
 <h5>startup script and watchdog</h5>
 under /etc/init.d/arduinostart you will find the daemon that kicks in when the Arduino is started.
 It will in turn run /root/start.js which build the path to the serial bridge.
-Inside the Sketch C code that runs on top of the MCU we have a special statement which reads:
+Inside the Sketch C code that runs on top of the MCU we have a statement of:
 
 <pre>
 delay(10000);
@@ -356,13 +356,15 @@ To learn more about setting the SignageStudio to send events to specific Signage
 http://www.digitalsignage.com/_html/signage_video.html?videoNumber=arduino
 
 If you inspect the code in /root/start.js you will notice the it comes with a built in Express web server.
-The server is pre-configured to listen to events coming from the SignagePlayer and act upon these evets.
+The server is pre-configured to listen to events coming from the SignagePlayer and act upon these events.
 
-Of course you can modify it to do whatever you want, but by default if you send it an event using curl:
+It includes goodies such as crossdomain.xml to allow certain Sandbox clients (such as Adobe Flash / AIR) access to the web server.
+
+Of course you can modify it to do whatever you want, but by default if you send it a post command event using curl or web browser:
 
 <pre>
-curl 192.168.1.94:3840/mcu13:1
-curl 192.168.1.94:3840/mcu13:0
+curl http://192.168.1.94:3840/mcu13:1
+curl http://192.168.1.94:3840/mcu13:0
 </pre>
 
 it will toggle the LED connected to pin 13.
@@ -400,7 +402,14 @@ to the SignagePlayer gateway and to the Arduino.
 With the API anyone can develop any solution to send commands from a mobile phone and be able to control an internal LAN Arduino without having to worry about configuring a firewall or port mapping.
 Because the SignagePlayer LAN server allows for the secure pass through into your LAN.
 
-You will find the application under /root/www/web_api.html and /root/www/web_api.js
+You will find the web app under /public/webcommands.html which is also served by the Express web server via:
+
+<pre>
+http://YOUR_ARDUINO_IP:3840/webcommands.html
+</pre>
+
+If you want to test this script online, visit: http://www.digitalsignage.com/arduino/webcommands.html
+Enter your SignageStudio login name, password and station id.
 
 
 What's next
@@ -408,7 +417,7 @@ What's next
 
 In the source code you will find additional useful code and libraries which include:
 
-- cylonExample: working example powered by the robotics Javascript cylon library from: http://cylonjs.com
+- cylonExample: Robotics Javascript cylon library from: http://cylonjs.com
 - echo.js: a simple way to interact between the MCU and Linux using stdin and stdout pipes
 - fireAlarm.js: Javascript example using multiple INPUT / OUTPUT pins and sending curl post
 - humanSensor.js: example using a human detector sensor
@@ -416,7 +425,7 @@ In the source code you will find additional useful code and libraries which incl
 - socketIOclient.js: a client library for interacting with socket.io node.js server, includes binary ws
 - testFirmata.js: general test script for Firmata and simple node.js web server
 - wifiResetAndReboot: reset shell script
-- diskSpaceExpander: Arduino storage expander onto external micro SD (no need if you are using our image)
+- diskSpaceExpander: Arduino storage expander (no need if you are using our image)
 - sysUpgradeImage: upgrade Arduino to release 1.5.2 (check Arduino.cc for newer builds)
 - initSerial.js: boot up test for MCU to Linux bridge connection
 
@@ -426,7 +435,7 @@ Resources:
 - node.js: http://nodejs.org
 - cylon: http://cylonjs.com
 - firmata.js: https://github.com/jgautier/firmata
-- arduino: arduino.cc
+- arduino: http://arduino.cc
 - digitalsignage.com: http://www.digitalsignage.com (free digital signage)
 - start kits: http://sunfounder.com
 
