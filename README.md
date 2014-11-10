@@ -356,7 +356,7 @@ Arduino and Digital Signage
 One of the great benefits of using Arduino, is its seamless integration with the Digital Signage SignagePlayer from MediaSignage.
 Once you enable the LAN Server:
 
-<img src="http://www.digitalsignage.com/_images/ardsc4.gif"/>
+<img src="http://www.digitalsignage.com/_images/ardsc5.gif"/>
 
 The SignagePlayer will essentially become a gateway to sending and receiving events.
 This hsa the benefit of allowing secure socket commands to be sent to the SignagePlayer from across the web and onto the SignagePlayer.
