@@ -302,6 +302,12 @@ All without having to open any firewalls or map internal IP / port addresses.
 Because the SignagePlayer runs with as a LAN server, and since it already connects with a socket to the remote mediaCLOUD, it can also pass through it events destined to the Arduino.
 To learn more about this functionally be sure to checkout the video tutorial at: http:/blabla
 
+you can view the log of the stats.js startup script using the tail command:
+
+<pre>
+tail -f /tmp/start.log
+</pre>
+
 
 
 Adding custom C code on MCU
@@ -441,6 +447,12 @@ next, you to to create a ssh tunnel, which is easy to use (again in Windows inst
 <pre>
 nodem --debug-brk --nolazy ./testFirmata.js
 </pre>
+
+and forward port
+
+<pre>
+ssh -L 5858:127.0.0.1:5858 root@192.168.1.76 -N
+</prev>
 
 notice that we are using nodem (m = more memory) instead of the standard node executible.
 This is because you will need to give nodejs more memory to do real time debugging, so we just
