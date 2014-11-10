@@ -456,23 +456,22 @@ and forward port
 
 <pre>
 ssh -L 5858:127.0.0.1:5858 root@192.168.1.76 -N
-</prev>
+</pre>
 
 notice that we are using nodem (m = more memory) instead of the standard node executible.
 This is because you will need to give nodejs more memory to do real time debugging, so we just
 created an alias env script for node which gives it that extar working room:
 
 The normal node runs as:
-
-```
+<pre>
 NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_new_space_size=2048 --max_executable_size=5 --gc_global --gc_interval=100 $@
-```
+</pre>
 
 while nodem with extra memory room runs as:
 
-```
+<pre>
 NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_executable_size=50 --gc_global --gc_interval=100 $@
-```
+</pre>
 
 
 What's next
