@@ -434,7 +434,7 @@ work flow: (https://www.jetbrains.com/webstorm/)
 
 In WebStorm config the node.js as such:
 
-<IMG>
+<img src="http://www.digitalsignage.com/_images/ardsc8.png"/>
 
 next, you to to create a ssh tunnel, which is easy to use (again in Windows install cygwin for the open source ssh client)
 
