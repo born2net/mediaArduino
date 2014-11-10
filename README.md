@@ -369,7 +369,7 @@ Once you do, you will be able to send and receive evets / triggers from Arduino,
 Pretty cool ha?
 
 The SignagePlayer will essentially become a gateway to sending and receiving events.
-This hsa the benefit of allowing secure socket commands to be sent to the SignagePlayer from across the web and onto the SignagePlayer.
+This has the benefit of allowing secure socket commands to be sent to the SignagePlayer from across the web and onto the SignagePlayer.
 From the SignagePlayer, the events will propagate to the appropriate Arduino.
 
 To learn more about setting the SignageStudio to send events to specific SignagePlayers / Arduino IP addresses review the video at:
@@ -463,15 +463,16 @@ This is because you will need to give nodejs more memory to do real time debuggi
 created an alias env script for node which gives it that extar working room:
 
 The normal node runs as:
-<pre>
+`
 NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_new_space_size=2048 --max_executable_size=5 --gc_global --gc_interval=100 $@
-</pre>
+`
 
 while nodem with extra memory room runs as:
 
-<pre>
+`
 NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_executable_size=50 --gc_global --gc_interval=100 $@
 </pre>
+`
 
 
 What's next
