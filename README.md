@@ -181,7 +181,7 @@ Default password is: arduino
 
 Select 'yes' when ssh prompts you to remember the host.
 
-Next, while logged into the Arduino Linux, run the command:
+Next, while logged into the Arduino Linux, execute the command:
 
 <pre>
 cp /.extroot.md5sum /tmp/overlay-disabled/etc/extroot.md5sum
@@ -388,35 +388,34 @@ board.seanBlinker(125, 125);  // value 1-127
 
 Arduino & Digital Signage
 ---------------------------------------
-One of the great benefits of using Arduino, is its seamless integration with the free Digital Signage service from http://www.digitalsignage.com.
-All you need is to install the SignagePlayer, and configure the LAN Server.
+One of the great benefits of using Arduino, is its seamless integration with the free Digital Signage service from http://www.digitalsignage.com
+All you need is to install the SignagePlayer, and configure it as a LAN Server.
 
-Once you do, you will be able to send and receive evets / triggers from Arduino, as you can see below.
+Once you do, you will be able to send and receive events / triggers from Arduino, as you can see below.
 
 <img src="http://www.digitalsignage.com/_images/ardsc6.gif"/>
 
 Pretty cool ha?
 
-The SignagePlayer will essentially become a gateway to sending and receiving events.
-This has the benefit of allowing secure socket commands to be sent to the SignagePlayer from across the web and onto the SignagePlayer.
+The SignagePlayer will essentially becomes a socket gateway to sending and receiving events.
+This has the benefit of allowing secure socket commands to be sent to the SignagePlayer across the web and onto the SignagePlayer.
 From the SignagePlayer, the events will propagate to the appropriate Arduino.
 
 To learn more about setting the SignageStudio to send events to specific SignagePlayers / Arduino IP addresses review the video at:
 http://www.digitalsignage.com/_html/signage_video.html?videoNumber=arduino
 
-If you inspect the code in /root/start.js you will notice the it comes with a built in Express web server.
+If you inspect the code in /root/start.js you will notice that it comes with a built in Express web server.
 The server is pre-configured to listen to events coming from the SignagePlayer and act upon these events.
 
-It includes goodies such as crossdomain.xml to allow certain Sandbox clients (such as Adobe Flash / AIR) access to the web server.
-
-Of course you can modify it to do whatever you want, but by default if you send it a post command event using curl or web browser:
+It includes crossdomain.xml to allow certain Sandbox clients (such as Adobe Flash / AIR) secure access to the web server.
+Of course you can modify it to do whatever you want, but by default if you send the express web server a post, using curl or a web browser:
 
 <pre>
 curl http://192.168.1.94:3840/mcu13:1
 curl http://192.168.1.94:3840/mcu13:0
 </pre>
 
-it will toggle the LED connected to pin 13.
+it will toggle the LED connected to pin 13 (1 == ON and 0 == OFF).
 
 The code that manages the pin number and state is part of the example included in start.js:
 
@@ -445,58 +444,49 @@ app.all("/mcu:pin", function (req, res) {
 Sending commands over the web
 ---------------------------------------
 
-Another sample application included in the Linux OS image is a web application that allows anyone to develop a Javascript based UI to send events directly
-to the SignagePlayer gateway and to the Arduino.
-
-With the API anyone can develop any solution to send commands from a mobile phone and be able to control an internal LAN Arduino without having to worry about configuring a firewall or port mapping.
-Because the SignagePlayer LAN server allows for the secure pass through into your LAN.
-
-You will find the web app under /public/webcommands.html which is also served by the Express web server via:
+Another sample application included in the Linux OpenWRT binary image is a web application that allows anyone to develop a Javascript based UI to send events directly
+to the SignagePlayer gateway and to pass these event to the Arduino.
+You will find the web app under /root/public/webcommands.html which is served by the Express web server:
 
 <pre>
 http://YOUR_ARDUINO_IP:3840/webcommands.html
 </pre>
 
-If you want to test this script online, visit: http://www.digitalsignage.com/arduino/webcommands.html
-Enter your SignageStudio login name, password and station id.
-
-Remember to also follow this video tutorial on how to setup the SignagePlayer as a LAN server:
-http://www.digitalsignage.com/_html/signage_video.html?videoNumber=arduino
+If you want to test this script online (to confirm firewall bypassing is working) visit: http://www.digitalsignage.com/arduino/webcommands.html
+Enter your SignageStudio login name, password and station id (station id is retrived from Studio Pro > Stations > selected station grid).
 
 
 Debugging node.js on Arduino Yun
 ---------------------------------------
 
-One of the great benefits in developing in Node.js Javascript vs in C, is the ability to debug in real time your node.js code.
-You can use the built in debugger in node.js, but we highly recommend using WebStorm or IntelliJ for much better
-work flow: (https://www.jetbrains.com/webstorm/)
+One of the great benefits in developing in Node.js / Javascript vs C, is the ability to debug in real time your node.js code.
+You can use the built in debugger in node.js, but we highly recommend using WebStorm or IntelliJ for a much better work flow: (https://www.jetbrains.com/webstorm/)
 
 In WebStorm config the node.js as such:
 
 <img src="http://www.digitalsignage.com/_images/ardsc8.png"/>
 
-next, you to to create a ssh tunnel, which is easy to use (again in Windows install cygwin for the open source ssh client)
+next, you to to create ssh tunnel (in Windows install cygwin for the open source ssh client)
 
 <pre>
 nodem --debug-brk --nolazy ./testFirmata.js
 </pre>
 
-and forward port
+and forward the port 5858
 
 <pre>
 ssh -L 5858:127.0.0.1:5858 root@192.168.1.76 -N
 </pre>
 
-notice that we are using nodem (m = more memory) instead of the standard node executible.
-This is because you will need to give nodejs more memory to do real time debugging, so we just
-created an alias env script for node which gives it that extar working room:
+notice that we are using nodem (m = more memory) instead of the standard node executable (part of the our Linux image).
+This is because you will need to give nodejs more memory to do real time debugging, so we just created an alias env script for node which gives it that extra working room:
 
 The normal node runs as:
 <pre>
 NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_new_space_size=2048 --max_executable_size=5 --gc_global --gc_interval=100 $@
 </pre>
 
-while nodem with extra memory room runs as:
+while nodem with extra memory runs as:
 
 <pre>
 NODE_PATH=/usr/lib/node_modules /usr/bin/nodejs --stack_size=1024 --max_old_space_size=20 --max_executable_size=50 --gc_global --gc_interval=100 $@
