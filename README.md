@@ -379,7 +379,7 @@ case SET_SEAN_BLINKER:
      break;
 </pre>
 
-and call it from /dev/testFirmata.js using
+and call it from /root/dev/testFirmata.js using
 
 <pre>
 board.seanBlinker(125, 125);  // value 1-127
