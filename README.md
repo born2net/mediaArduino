@@ -133,7 +133,7 @@ Next, select to upgrade the firmware and reboot (it's the [RESET] at the bottom 
 
 Next, when the device has been updated with the latest firmware, configure it to join your wifi network (click the configure button on the web interface) and once again reboot it.
 
-Next, we will burn the Linux OS onto the Micro SD card. Download it from: http://alturl.com/ytdxo
+Next, we will burn the Linux OS onto the Micro SD card. Download it from: http://www.digitalsignage.com/arduino/SD_Image/ArduinoOpenWRT.imgc
 
 To burn the binary image we will use a HDD Sector copy application for Windows. Download it from: http://alturl.com/k333x
 
