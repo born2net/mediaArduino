@@ -20,25 +20,24 @@ While it's true that you can buy off the shelf products to enable IoT, such as V
     <li> You can choose from thousands of inexpensive sensors, relays, switches, and more</li>
     <li> Arduino is very popular which means you can find a ton of help and docs</li>
     <li> Arduino is easily expandable with shields (add on boards)</li>
-    <li> It's 100% hackable so you have no limits</li>
+    <li> It's 100% hackable so there are no limits</li>
 </ol>
 
-This document was created to help you get started with Arduino and Node.js as well as to take advantage of a pre-compiled binary Linux image that you can download.
-Anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit as we take you through the entire process as
-Also, we give all the first and for most to help Arduino users integrate a custom solutions of IoT and Digital Signage;
-
+This document was created to help you get started with Arduino and Node.js as well as to take advantage of a pre-compiled binary Linux image that you can download and burn onto your own Micro SD card.
+Anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit from this doc.
+Also, at the end of the document we cover integration between Digital Signage with Arduino as well.
 
 To help you get started as quickly as possible we built a custom binary image that you can burn onto a micro SD card and load it directly onto the Arduino Yun.
 The image includes Node.js 10.32, the Firmata drivers of Node.js and Firmata drivers for the Micro controller to allow communication between the two using the Yun bridge.
-We also include a serial watchdog, sample apps and more.
+We also include a serial watchdog as well lots of sample apps, pre compiled binaries such as socket.io and more.
 
 To summarize:
 <ul>
 <li>simple to follow, step by step instructions on Arduino Yun setup</li>
 <li>everything that's needed to run node.js with Arduino Yun</li>
-<li>provide a pre-compiled binary image allowing for a quick setup of a new Arduino Yun</li>
+<li>provide a perfectly setup pre-compiled binary of Linux OpenWRT image allowing for a quick setup of a new Arduino Yun</li>
 <li>pre compiled Firmata driver for both Node.js and as Arduino Sketch</li>
-<li>web server to allow communication between Arduino Yun and Digital Signage Internet of things</li>
+<li>web server to allow communication between Arduino Yun and Digital Signage Internet Of Things</li>
 <li>built in watchdog to restart upon serial communication failure</li>
 <li>App for remote control of Arduino Yun across the web using SignagePlayer LAN server gateway</li>
 <li>App for socket client to connect to remote socket.io node.js server</li>
@@ -50,19 +49,18 @@ To summarize:
 Why Arduino Yun and Node.js
 ---------------------------------------
 
-Arduino IDE can load a sketch, which is C based code that compiles into machine language and runs in a loop on top of the Arduino Yun Micro Controller.
-While C is a powerful language, it can be a pain to develop in C and even more of burden to debug.
+Arduino IDE can load and compile sketches, which are C based code base that compiles into machine language and runs in a loop on top of the Arduino Yun Micro Controller (MCU).
+While C is a powerful language, it can be a pain to develop in, and even more of burden to debug.
 
 Say hello to Node.js (http://nodejs.org) Node.js, a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications.
 Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js can process Javascript code right on the Arduino Yun Linux OS.
-That's right, Arduino Yun comes with built in "Linux on a chip" version of OpenWrt (https://openwrt.org)
+That's right, Arduino Yun comes with a built in "Linux on a chip" version of OpenWRT (https://openwrt.org)
 
 What this means is that you can develop (and even debug) in Javascript on the Arduino Yun, and use a driver called Firmata to translate Javascript commands onto the Arduino Yun micro controller.
 Essentially the Firmata is a wrapper over a serial driver that pushes bytes onto the Micro controller unit (MCU) as well as listens to data coming from the MCU.
 
-And if you find that you do need to develop something specific in C; you'll be happy to know that we enabled in the Firmata driver an option to send and receive strings.
+And if you find that you do need to develop something specific in C; you'll be happy to know that we have enabled in the Firmata driver an option to send and receive Strings.
 So you can add custom C functions on the Arduino MCU, and invoke them from Javascript, if you need to...
-
 
 ------------------------------------------------------------------------
 
@@ -70,7 +68,7 @@ Architecture
 ---------------------------------------
 
 Below you can get a sense of how things are laid out.
-The process of sending a byte command from your own developed javascript code and all the way down into the MCU.
+The process of sending a serial byte from your own developed javascript Node.js code and all the way down onto the MCU.
 
 <pre>
 +---------------------------------+
@@ -110,25 +108,24 @@ Arduino setup
 
 When you first get your new Arduino Yun it will come configured as a WIFI hot spot.
 This means you can connect to it directly using a mobile phone or tablet as it will serve an IP over DHCP so you connect to its built in web server.
-You can follow these instructions to initially setup your Arduino Yun: http://arduino.cc/en/Guide/ArduinoYun (per Windows and Mac).
+Follow these instructions to initially setup your Arduino Yun: http://arduino.cc/en/Guide/ArduinoYun (per Windows and Mac).
 
-Next, you will need a Micro SD card. You should get a 16GB Micro SD card.
+Next, you will need a Micro SD card. You should get a 8GB Micro SD card.
 
-Why 16GB you ask? since the image we built was created from an 8GB micro SD, there is a chance that if you also get an 8GB micro SD that has a size that is a few bytes smaller, the image will not fit.
-So to play it safe, get the next level up micro SD (16GB) and you won't have an issue burning the image in (it's only like $4.00 more, crazy how cheap memory is these days).
-The binary image already has all of the Linux configuration on it including drivers, applications and configs, so you will not have to setup anything special on the Linux side.
+Why 8GB you ask? since the binary OpenWRT image we built was created from a 4GB micro SD, there is a chance that it may not be exactly the same number of sectors as your 4GB Micro SD, which will result in failure as the binary image may not fit.
+So to play it safe, get the next level up micro SD (8GB) and you won't have any issues burning the image in (it's only like $2.00 more, crazy how cheap memory is these days).
+The binary image already has all of the Linux configuration on it including drivers, applications and configs, so you will not have to setup anything on the Linux side.
 
 First we will begin by updating the firmware of the Arduino to version 1.5.2, so copy this updated firmware file: http://alturl.com/8ivfo onto the root micro SD card.
 
-Next, insert the Micro SD 16GB with the file:
 <pre>
 openwrt-ar71xx-generic-yun-16M-squashfs-sysupgrade.bin
 </pre>
 
-that was placed in the the root drive of the Micro SD (not in any sub-directory) and reboot the Arduino.
+Confirm the file is in the root of the Micro SD (not in sub-folder), insert onto the Micro SD slot of the Arduino Yun and reboot it.
 
 Open a up a web browser and point it to the address of the Arduino Yun (remember it is still a hot spot serving you an IP address).
-You can most likely reach it via the IP address of: 192.168.240.1 or via http://arduino.local
+You can most likely can reach it via the IP address of: 192.168.240.1 or via http://arduino.local
 
 Next, select to upgrade the firmware and reboot (it's the [RESET] at the bottom of the web page), it wil take a few minutes for the update to complete.
 
@@ -140,16 +137,17 @@ Next, we will burn the Linux OS onto the Micro SD card. Download it from: http:/
 
 To burn the binary image we will use a HDD Sector copy application for Windows. Download it from: http://alturl.com/k333x
 
-Install the
+Install the application in Windows
+
 <pre>
 HDDRawCopy1.10Setup.exe
 </pre>
 
-Next you will need to connect the Micro SD (16GB) to the PC, it should come up as a drive letter in Windows, like F:\ or something of that sort.
+Next you will need to connect the Micro SD to the PC, it should come up as a drive letter in Windows, like F:\ or something of that sort.
 
 Next, launch HDDRawCopy, select source from file (double click) and select the downloaded file of: PerfectArduino.imgc
 
-Next, click 'next' to select the target device, which will be the drive letter of the Micro SD (be sure tp select the correct drive letter or you may lose data by formatting the wrong device).
+Now click 'next' to select the target device, which will be the drive letter of the Micro SD (be sure tp select the correct drive letter or you may lose data by formatting the wrong device).
 
 Next, pick the Micro SD and click start to begin the burning process of the Linux OS image onto the micro SD card, this will take a little while.
 
@@ -170,7 +168,9 @@ Next, select Tools > Port to see it's new IP address that the Arduino received f
 
 As you can see my IP address is 192.168.1.94 (yours will be different).
 
-Next you need to ssh (login) onto the Linux side of the Arduino. In Mac ssh is part of the OS, in Windows, you can download cygwin which comes with ssh (https://www.cygwin.com/)
+Next you need to ssh (login) onto the Linux side of the Arduino.
+
+In Mac ssh is part of the OS, in Windows, you can download cygwin which comes with ssh (https://www.cygwin.com/)
 
 Once you confirm your Windows or Mac has the ssh command, execute ssh@YOUR_IP_ADDRESS, as in:
 <pre>
@@ -187,7 +187,8 @@ Next, while logged into the Arduino Linux, run the command:
 cp /.extroot.md5sum /tmp/overlay-disabled/etc/extroot.md5sum
 </pre>
 
-don't reboot the Arduino just yet, as we need to install the Firmata driver onto the MCU of the Arduino so we can communicate with it from the node.js using the Node.js Firmata.js package.
+this will create a clean md5 hash so OpenWRT accepts the Micro SD as a valid device to mount.
+Don't reboot the Arduino just yet, as we need to install the Firmata driver onto the MCU of the Arduino so we can communicate with it from the node.js using the Firmata.js package.
 
 Download from this git repository the file of:
 
@@ -197,7 +198,7 @@ FirmatNodeJs/FirmatNodeJs.ino
 
 and put it in a directory on your Mac or PC of: FirmatNodeJs/FirmatNodeJs.ino
 
-you will also need to download 3 more files:
+you will also need to download 3 more files from this repository:
 
 <pre>
 firmataSketch library\Boards.h
@@ -205,14 +206,14 @@ firmataSketch library\Firmata.cpp
 firmataSketch library\Firmata.h
 </pre>
 
-You will need to override the default file that ship with Arduino as these library firmata files also add support for String argument passing to allow is to run custom C functions from Node.js.
+You will need to override the 3 default files that ship with Arduino as this library firmata files also add support for String argument passing to allow us to run custom C functions from Node.js.
 In Windows override the files at:
 
 <pre>
 C:\Program Files (x86)\Arduino\libraries\Firmata\src
 </pre>
 
-In Mac, I am not sure where are they located, should be within the installation directory of the Arduino IDE installed App.
+In Mac, I am not sure where are they located, it should be within the installation directory of the Arduino IDE installed App.
 
 Next, we will burn in the FirmatNodeJs.ino C sketch into Arduino
 
@@ -221,64 +222,63 @@ In the Arduino IDE App select to open the sketch of:
 FirmatNodeJs/FirmatNodeJs.ino
 </pre>
 
-In the Arduino IDE App select Tools > Port > and the select the Com port or IP address of the Arduino
+In the Arduino IDE App select Tools > Port > and select the Com port or IP address of the Arduino
 
-Next, click update and upload to burn in the Firmata driver onto the MCU
+Next, click update and upload to burn in the Firmata driver onto the MCU.
 
 Once it's done, reboot the Arduino
-
-At this point you should be able to ssh back onto the Arduino and when you do
-<pre>
-cd /root
-ls -al
-</pre>
-
-you should see a bunch of files, if you do, you are in good shape. If you don't you must have missed a step.
-Now lets test that Node.js can communicate with the Micro controller. Type:
-
-<pre>
-cd /root/dev
-node test_firmata.js
-</pre>
-
-You should see the text below and the red LED on pin 13 should blink a few times.
-<br/>
-If you did, GOOD JOB, the hard part is behind you.
 
 ---------------------------------------
 
 Is it all working?
 ---------------------------------------
 
-The best way to check if eveyrthing is working is to run testFirmata
+
+At this point you should be able to ssh back onto the Arduino, execute:
+
+<pre>
+cd /root
+ls -al
+</pre>
+
+you should see a bunch of files, if you do, you are in good shape.
+If you don't you must have missed a step as OpenWRT did not mount the Micro SD as the main Linux drive.
+Now lets test that Node.js can communicate with the Micro controller. Type:
 
 <pre>
 /root/dev/testFirmata.js
 </pre>
 
+You should see the text below and the red LED on pin 13 should blink a few times.
+If you did, GOOD JOB, the hard part is behind you.
+
 <img src="http://www.digitalsignage.com/_images/ardsc5.gif"/>
 
-keep in mind that this will stop start.js to free the serial port so we can run the test, so you will need to reboot Arduino one time to get the
-/root/start.js node daemon to kick back in.
+Keep in mind that this test script will stop /root/start.js and free up the serial port so we can run the test,
+so you will need to reboot Arduino one time to get the /root/start.js node daemon to start back up (we will cover start.js in just a sec).
 
 So what's installed on the Linux OS?
 ---------------------------------------
 
-Next we will review some of the cool things you got ad part of the pre-installed Linux OS:
+Next we will review some of the cool things you got as part of the pre-installed Linux OpenWRT OS:
 
 - serial driver and node modules
 - startup script and watchdog
 - socket communication
 - Digital Signage web server
+- More goodies...
 
 <h5>Serial driver</h5>
 In /usr/lib/node_modules/serial you will find the node.js serial driver that is the basis for all serial communication.
-Also, in /usr/lib/node_modules/ you will find other node modules including express, firmata, underscore and others.
+Also, in /usr/lib/node_modules/ you will find other node modules including express web server, firmata, underscore and others.
 
 <h5>startup script and watchdog</h5>
 under /etc/init.d/arduinostart you will find the daemon that kicks in when the Arduino is started.
-It will in turn run /root/start.js which build the path to the serial bridge.
-Inside the Sketch C code that runs on top of the MCU we have a statement of:
+It will in turn run /root/start.js which builds a communication path to the serial bridge.
+
+The serial bridge between Linux OS and the MCU will remain occupied by start.js, so be sure to kill it before testing other scripts.
+
+Inside C Sketch that runs on top of the MCU we have a statement of:
 
 <pre>
 delay(10000);
@@ -288,30 +288,33 @@ delay(10000);
 
 Which will wait for U-boot to finish startup.  Consume all bytes until we are done.
 While this hack works 95% of the time, there is still a slight chance the Arduino serial bridge will fail.
-But not to worry, if it does fail, our watchdog which runs from start.js through /root/initSerial.js monitors the serial bridge.
-If a connection was not establish within the given time, the Arduino Linux and MCU are restarted and messages are logged onto /tmp/start.log.
-So within 1-2 boots the Serial bridge will recover, so you can restart your Arduino with confidence knowing you will always have a connection between the Linux OS and MCU.
+But not to worry, if it does fail, our watchdog which runs from start.js through /root/initSerial.js and it monitors the serial bridge.
 
-<h5>/root/clientio.js socket sample script</h5>
-The Arduino includes a sample socket script which connects to a socket.io sever (http://socket.io).
-So if you ever want to connect to a remote socket.io node.js server so you can bypass your LAN firewall and not have to create router maps, this is a great solution to do so.
+If a connection is not establish within the given time frame, the Arduino Linux and MCU are restarted and messages are logged onto start.log.
 
-<h5>/root/start.js Express Digital Signage web server</h5>
-/root/start.js is the main script that runs on boot-up.
-The included Express server will listen to commands from the SignagePlayer gateway so it can flip I/O pins from the SignagePlayer event commands.
-
-<h5>Sample web application to send remote commands</h5>
-One of the great things about using the SignagePlayer as a LAN server (gateway) is the ability to securely send remote commands to the Arduino over the web.
-All without having to open any firewalls or map internal IP / port addresses.
-Because the SignagePlayer runs with as a LAN server, and since it already connects with a socket to the remote mediaCLOUD, it can also pass through it events destined to the Arduino.
-To learn more about this functionally be sure to checkout the video tutorial at: http:/blabla
-
-you can view the log of the stats.js startup script using the tail command:
+To view stats.js startup script using the tail command execute:
 
 <pre>
 tail -f /tmp/start.log
 </pre>
 
+So within 1-2 boots the Serial bridge will recover, so restart your Arduino with confidence knowing you will always have a connection between the Linux OS and MCU.
+
+<h5>/root/clientio.js socket sample script</h5>
+The Arduino includes a sample socket script which connects to a socket.io sever (http://socket.io).
+If you ever want to connect to a remote socket.io node.js server and bypass your LAN firewall and not have to create router maps in your local ISP's router, this is will work great.
+
+<h5>/root/start.js Express Digital Signage web server</h5>
+/root/start.js is the main script that runs on boot-up.
+The includes Express server that will listen to commands on port 3840 from the SignagePlayer gateway (or any POST for that matter) and assist in remote reading and writing I/O pin data.
+
+<h5>Sample web application to send remote commands</h5>
+One of the great things about using the SignagePlayer as a LAN server (gateway) is the ability to securely send remote commands to the Arduino over the web.
+This is done without having to open any firewalls or map internal IP / port addresses in your local ISP router. It's like the socket.io client, only that we at MediaSignage provide a free Socket web server for you as well as a local socket client,
+which is the SignagePlayer LAN Server.
+
+Because the SignagePlayer operate as a LAN server, and since it already connects with a socket to the remote mediaCLOUD, it can also pass through events destined to the Arduino.
+To learn more about this functionally be sure to checkout the video tutorial at: http://www.digitalsignage.com/_html/signage_video.html?videoNumber=arduino
 
 
 Adding custom C code on MCU
@@ -358,7 +361,29 @@ which in turn will be received on the node.js via the function:
     });
 </pre>
 
-Checkout /root/dev/test_firmata.js for a sample script on how to send strings to the MCU and receive back from the MCU.
+Checkout /root/dev/testFirmata.js for a sample script that send and receives data to and from the MCU.
+
+In addition, we also developed a custom function on the Sketch called seanBlinkerCallback.
+This function can be executed directly from Node.js as we included the definition for the custom function as the command in Firmata.h header file:
+
+<pre>
+#define SET_SEAN_BLINKER        0xF1 // set a pin to INPUT/OUTPUT/PWM/etc
+</pre>
+
+as well as in Firmata.cpp file:
+
+<pre>
+case SET_SEAN_BLINKER:
+     if(seanBlinkerCallback)
+       (*seanBlinkerCallback)(storedInputData[1], storedInputData[0]);
+     break;
+</pre>
+
+and call it from /dev/testFirmata.js using
+
+<pre>
+board.seanBlinker(125, 125);  // value 1-127
+</pre>
 
 
 Arduino & Digital Signage
