@@ -2,4 +2,4 @@ alias wifiInfo="/usr/bin/pretty-wifi-info.lua"
 alias ll="ls -alh --color"
 alias cls="clear"
 export TERM=xterm;
-alias vi="vim"
+alias debug="nodem --debug-brk --nolazy ./testFirmata.js";

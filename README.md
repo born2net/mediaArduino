@@ -10,21 +10,23 @@ Introduction
 
 
 Arduino Yun is an amazing prototyping platform that allows anyone to build a custom solution for Internet of things (IoT).
-This means that you can control lights, turn on oven toasters, get real time weather info, remote control servos, anything, without needing a degree in electrical engineering.
+This means that you can control lights, turn on oven toasters, get real time weather info, remote control servos, automate anything, without needing a degree in electrical engineering.
 
-While it's true that you can buy off the shelf products to enable IoT, such as Vera, Ninja Blocks etc, Arduino is unique as it allows you to:
+While it's true that you can buy off the shelf products to enable IoT, such as Vera, Ninja Blocks etc... Arduino is unique as it allows you to:
 <ol>
-    <li> create a fully customized product with very little effort</li>
-    <li> keep cost down</li>
-    <li> creates opportunity to build solutions for your clients and charge them for that service</li>
-    <li> you can choose from thousands of inexpensive sensors, relays, switches, and more</li>
+    <li> Create a fully customized product with very little effort</li>
+    <li> Keep the cost down</li>
+    <li> Creates an opportunity to build solutions for your clients and charge them accordingly</li>
+    <li> You can choose from thousands of inexpensive sensors, relays, switches, and more</li>
     <li> Arduino is very popular which means you can find a ton of help and docs</li>
-    <li>Arduino is easily expandable with shields (add on boards)</li>
-    <li> 100% hackable so there are no limits</li>
+    <li> Arduino is easily expandable with shields (add on boards)</li>
+    <li> It's 100% hackable so you have no limits</li>
 </ol>
 
-Although this document was created first and for most to help Arduino users integrate a custom solutions of IoT and Digital Signage;
-anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit.
+This document was created to help you get started with Arduino and Node.js as well as to take advantage of a pre-compiled binary Linux image that you can download.
+Anyone who is interested in setting up Arduino Yun with Node.js will greatly benefit as we take you through the entire process as
+Also, we give all the first and for most to help Arduino users integrate a custom solutions of IoT and Digital Signage;
+
 
 To help you get started as quickly as possible we built a custom binary image that you can burn onto a micro SD card and load it directly onto the Arduino Yun.
 The image includes Node.js 10.32, the Firmata drivers of Node.js and Firmata drivers for the Micro controller to allow communication between the two using the Yun bridge.
@@ -256,6 +258,8 @@ The best way to check if eveyrthing is working is to run testFirmata
 
 <img src="http://www.digitalsignage.com/_images/ardsc5.gif"/>
 
+keep in mind that this will stop start.js to free the serial port so we can run the test, so you will need to reboot Arduino one time to get the
+/root/start.js node daemon to kick back in.
 
 So what's installed on the Linux OS?
 ---------------------------------------

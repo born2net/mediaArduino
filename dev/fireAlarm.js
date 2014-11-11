@@ -8,6 +8,7 @@
  When events are triggered, we use curl to post data to remote IP / PORT 192.168.1.81:9999, a SignagePlayer
  LAN server gateway (replace with your IP address / port set in the SignageStudio).
  **/
+var firmata = require('firmata');
 var exec = require('child_process').exec;
 var _ = require('underscore');
 
