@@ -193,10 +193,10 @@ Don't reboot the Arduino just yet, as we need to install the Firmata driver onto
 Download from this git repository the file of:
 
 <pre>
-FirmatNodeJs/FirmatNodeJs.ino
+firmata/firmata.ino
 </pre>
 
-and put it in a directory on your Mac or PC of: FirmatNodeJs/FirmatNodeJs.ino
+and put it in a directory on your Mac or PC of: firmata/firmata.ino
 
 you will also need to download 3 more files from this repository:
 
@@ -215,11 +215,11 @@ C:\Program Files (x86)\Arduino\libraries\Firmata\src
 
 In Mac, I am not sure where are they located, it should be within the installation directory of the Arduino IDE installed App.
 
-Next, we will burn in the FirmatNodeJs.ino C sketch into Arduino
+Next, we will burn in the firmata.ino C sketch into Arduino
 
 In the Arduino IDE App select to open the sketch of:
 <pre>
-FirmatNodeJs/FirmatNodeJs.ino
+firmata/firmata.ino
 </pre>
 
 In the Arduino IDE App select Tools > Port > and select the Com port or IP address of the Arduino
@@ -323,7 +323,7 @@ Adding custom C code on MCU
 If you look at the C code in our Arduino Firmata sketch:
 
 <pre>
-FirmatNodeJs/FirmatNodeJs.ino
+firmata/firmata.ino
 </pre>
 
 you will notice that we added a snippet of C code:
