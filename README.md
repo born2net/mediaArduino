@@ -145,7 +145,7 @@ HDDRawCopy1.10Setup.exe
 
 Next you will need to connect the Micro SD to the PC, it should come up as a drive letter in Windows, like F:\ or something of that sort.
 
-Next, launch HDDRawCopy, select source from file (double click) and select the downloaded file of: PerfectArduino.imgc
+Next, launch HDDRawCopy, select source from file (double click) and select the downloaded file of: http://www.digitalsignage.com/arduino/PerfectArduino.imgc
 
 Now click 'next' to select the target device, which will be the drive letter of the Micro SD (be sure tp select the correct drive letter or you may lose data by formatting the wrong device).
 
