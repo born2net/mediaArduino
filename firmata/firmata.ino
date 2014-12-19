@@ -660,7 +660,7 @@ void setup()
 void setup() 
 {
   delay(10000);
-  Serial1.begin(57600); // Set the baud.
+  Serial1.begin(9600); // Set the baud.
   while (!Serial1) {}
   // Wait for U-boot to finish startup.  Consume all bytes until we are done.
   do {
