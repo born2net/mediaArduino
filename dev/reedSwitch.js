@@ -25,14 +25,25 @@ var board = new firmata.Board("/dev/ttyATH0", function (err) {
         return;
     }
 
-    var REED = 3;
+    var REED = 2;
+    var LEDPIN = 13;
+
+    function resetLED (){
+        setTimeout(function(){
+            board.digitalWrite(LEDPIN, board.LOW);
+        },4000)
+    }
+
     board.pinMode(REED, board.MODES.INPUT);
-    // board.digitalWrite(REED, 1);
+    board.pinMode(LEDPIN, board.MODES.OUTPUT);
+    board.digitalWrite(LEDPIN, board.LOW);
     board.digitalRead(REED, _.debounce(function (e) {
         if (e == 1) {
             console.log('door triggered ' + c++ );
+            board.digitalWrite(LEDPIN, board.HIGH);
+            resetLED();
         }
-    }, 1000, true));
+    }, 500, true));
 
     //board.digitalRead(REED, function (e) {
     //    console.log(e);
