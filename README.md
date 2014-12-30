@@ -181,7 +181,7 @@ Default password is: arduino
 
 Select 'yes' when ssh prompts you to remember the host.
 
-Next, while logged into the Arduino Linux, execute the command:
+Next, while logged into the Arduino Linux, execute the commands:
 
 <pre>
 mkdir  /tmp/overlay-disabled
