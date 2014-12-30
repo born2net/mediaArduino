@@ -184,6 +184,8 @@ Select 'yes' when ssh prompts you to remember the host.
 Next, while logged into the Arduino Linux, execute the command:
 
 <pre>
+mkdir  /tmp/overlay-disabled
+mkdir /tmp/overlay-disabled/etc/
 cp /.extroot.md5sum /tmp/overlay-disabled/etc/extroot.md5sum
 </pre>
 
