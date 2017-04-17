@@ -369,7 +369,7 @@ In addition, we also developed a custom function on the Sketch called seanBlinke
 This function can be executed directly from Node.js as we included the definition for the custom function as the command in Firmata.h header file:
 
 <pre>
-#define SET_SEAN_BLINKER        0xF1 // set a pin to INPUT/OUTPUT/PWM/etc
+# define SET_SEAN_BLINKER        0xF1 // set a pin to INPUT/OUTPUT/PWM/etc
 </pre>
 
 as well as in Firmata.cpp file:
